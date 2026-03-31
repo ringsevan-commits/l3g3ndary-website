@@ -2908,5 +2908,270 @@
         window.getStakingData = () => state.stakingData;
         window.getStats = () => state.stats;
     </script>
+<!-- Floating Navigation -->
+<style>
+    .floating-nav {
+        position: fixed;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 30px;
+        padding: 12px 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .floating-nav-item {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.1);
+        color: #94A3B8;
+        font-size: 1.2rem;
+        position: relative;
+    }
+    
+    .floating-nav-item:hover {
+        background: rgba(139, 92, 246, 0.3);
+        color: var(--primary);
+        transform: scale(1.1);
+    }
+    
+    .floating-nav-item.active {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+    }
+    
+    .floating-nav-item .tooltip {
+        position: absolute;
+        right: 55px;
+        background: var(--dark);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        border: 1px solid var(--primary);
+        pointer-events: none;
+        font-weight: 500;
+    }
+    
+    .floating-nav-item:hover .tooltip {
+        opacity: 1;
+        visibility: visible;
+        right: 60px;
+    }
+    
+    .floating-nav-toggle {
+        display: none;
+    }
+    
+    @media (max-width: 768px) {
+        .floating-nav {
+            top: auto;
+            bottom: 20px;
+            right: 20px;
+            left: auto;
+            transform: none;
+            flex-direction: row;
+            padding: 8px 12px;
+            background: rgba(15, 23, 42, 0.98);
+            border-radius: 50px;
+            gap: 8px;
+        }
+        
+        .floating-nav-item {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+        
+        .floating-nav-item .tooltip {
+            display: none;
+        }
+        
+        .floating-nav.collapsed .floating-nav-item:not(.nav-toggle) {
+            display: none;
+        }
+        
+        .floating-nav-toggle {
+            display: flex;
+        }
+        
+        .floating-nav.collapsed {
+            width: auto;
+            padding: 8px 12px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .floating-nav {
+            bottom: 10px;
+            right: 10px;
+            gap: 6px;
+        }
+        
+        .floating-nav-item {
+            width: 36px;
+            height: 36px;
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+<div class="floating-nav" id="floatingNav">
+    <div class="floating-nav-item" data-section="security-transparency" title="Security & Transparency">
+        <span>🔒</span>
+        <span class="tooltip">Security</span>
+    </div>
+    <div class="floating-nav-item" data-section="mev-protection" title="MEV Protection">
+        <span>🛡️</span>
+        <span class="tooltip">MEV Protection</span>
+    </div>
+    <div class="floating-nav-item" data-section="tokenomics" title="Tokenomics">
+        <span>📊</span>
+        <span class="tooltip">Tokenomics</span>
+    </div>
+    <div class="floating-nav-item" data-section="contracts" title="Contract Addresses">
+        <span>📋</span>
+        <span class="tooltip">Contracts</span>
+    </div>
+    <div class="floating-nav-item" data-section="proof-section" title="Proof of Renouncement">
+        <span>🔍</span>
+        <span class="tooltip">Proof</span>
+    </div>
+    <div class="floating-nav-item" data-section="roadmap" title="Roadmap">
+        <span>🗺️</span>
+        <span class="tooltip">Roadmap</span>
+    </div>
+    <div class="floating-nav-item" data-section="staking" title="NFT Staking">
+        <span>🎯</span>
+        <span class="tooltip">Staking</span>
+    </div>
+    <div class="floating-nav-item" data-section="lockdown-campaign" title="Lockdown Campaign">
+        <span>🔒</span>
+        <span class="tooltip">Lockdown</span>
+    </div>
+    <div class="floating-nav-item" data-section="community" title="Community">
+        <span>🌍</span>
+        <span class="tooltip">Community</span>
+    </div>
+    <div class="floating-nav-item floating-nav-toggle" id="navToggle" title="Toggle menu">
+        <span>☰</span>
+    </div>
+</div>
+
+<script>
+    // Floating Navigation Logic
+    (function() {
+        const nav = document.getElementById('floatingNav');
+        const navItems = document.querySelectorAll('.floating-nav-item[data-section]');
+        const navToggle = document.getElementById('navToggle');
+        
+        // Toggle menu on mobile
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                nav.classList.toggle('collapsed');
+            });
+        }
+        
+        // Scroll to section on click
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const sectionId = this.getAttribute('data-section');
+                const section = document.getElementById(sectionId);
+                
+                if (section) {
+                    const offset = 80;
+                    const sectionTop = section.getBoundingClientRect().top + window.pageYOffset - offset;
+                    
+                    window.scrollTo({
+                        top: sectionTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active state
+                    navItems.forEach(navItem => navItem.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // On mobile, collapse menu after click
+                    if (window.innerWidth <= 768) {
+                        nav.classList.add('collapsed');
+                    }
+                }
+            });
+        });
+        
+        // Update active section on scroll
+        function updateActiveSection() {
+            const sections = [];
+            navItems.forEach(item => {
+                const sectionId = item.getAttribute('data-section');
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    sections.push({
+                        id: sectionId,
+                        element: section,
+                        navItem: item
+                    });
+                }
+            });
+            
+            const scrollPosition = window.scrollY + 100;
+            
+            let currentSection = null;
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = sections[i];
+                const sectionTop = section.element.offsetTop;
+                const sectionBottom = sectionTop + section.element.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    currentSection = section;
+                    break;
+                }
+            }
+            
+            sections.forEach(section => {
+                if (currentSection && section.id === currentSection.id) {
+                    section.navItem.classList.add('active');
+                } else {
+                    section.navItem.classList.remove('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', updateActiveSection);
+        window.addEventListener('resize', updateActiveSection);
+        updateActiveSection();
+        
+        // Close mobile menu on scroll
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth <= 768) {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    nav.classList.add('collapsed');
+                }, 1500);
+            }
+        });
+    })();
+</script>
+
 </body>
 </html>
