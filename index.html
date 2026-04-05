@@ -2282,157 +2282,207 @@
         // ============================
         // UPDATE STAKING STATS
         // ============================
-        async function updateStakingStats() {
+        // Multiple RPC endpoints for redundancy
+const RPC_ENDPOINTS = [
+    'https://eth.llamarpc.com',
+    'https://rpc.ankr.com/eth',
+    'https://eth-mainnet.public.blastapi.io',
+    'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+    'https://cloudflare-eth.com',
+    'https://ethereum.publicnode.com'
+];
+
+// Cache for stats
+let cachedStats = null;
+let lastFetchTime = 0;
+let currentRpcIndex = 0;
+
+async function getWorkingProvider() {
+    // Try endpoints in sequence until one works
+    for (let i = 0; i < RPC_ENDPOINTS.length; i++) {
+        const index = (currentRpcIndex + i) % RPC_ENDPOINTS.length;
+        const rpcUrl = RPC_ENDPOINTS[index];
+        
+        try {
+            const provider = new ethers.JsonRpcProvider(rpcUrl);
+            // Test the provider
+            await provider.getBlockNumber();
+            console.log(`✅ Connected to RPC: ${rpcUrl}`);
+            currentRpcIndex = index;
+            return provider;
+        } catch (e) {
+            console.warn(`RPC failed: ${rpcUrl}`, e.message);
+        }
+    }
+    throw new Error('All RPC endpoints failed');
+}
+
+async function updateStakingStats() {
     try {
         console.log('🔄 Fetching real-time stats from contracts...');
         
-        // Create read-only provider (works without wallet)
+        // Try to use connected wallet provider first if available
         let provider;
         if (state.provider) {
             provider = state.provider;
+            console.log('Using connected wallet provider');
         } else {
-            // Use public RPC if wallet is not connected
-            provider = new ethers.JsonRpcProvider('https://eth.llamarpc.com');
+            // Use fallback RPC endpoints
+            provider = await getWorkingProvider();
         }
         
-        // Initialize contracts for reading (even without wallet)
-        let legendStakingContract = null;
-        let passStakingContract = null;
-        let tokenContract = null;
+        // Contract addresses
+        const legendStakingAddr = CONFIG.staking["L3G3NDS"];
+        const passStakingAddr = CONFIG.staking["L3G3NDARY Pass"];
+        const tokenAddr = CONFIG.token;
         
-        try {
-            legendStakingContract = new ethers.Contract(
-                CONFIG.staking["L3G3NDS"],
-                STAKING_ABI,
-                provider
-            );
-        } catch (e) {
-            console.warn('Failed to init legend staking contract:', e);
-        }
+        // Extended ABI with more method possibilities
+        const ExtendedStakingABI = [
+            "function totalStaked() view returns (uint256)",
+            "function totalStakedAmount() view returns (uint256)",
+            "function stakedTotal() view returns (uint256)",
+            "function getTotalStaked() view returns (uint256)",
+            "function totalStakedNFTs() view returns (uint256)",
+            "function stakedCount() view returns (uint256)",
+            "function rewardBalance() view returns (uint256)",
+            "function totalRewardsDistributed() view returns (uint256)",
+            "function totalStakedTokens() view returns (uint256)"
+        ];
         
-        try {
-            passStakingContract = new ethers.Contract(
-                CONFIG.staking["L3G3NDARY Pass"],
-                STAKING_ABI,
-                provider
-            );
-        } catch (e) {
-            console.warn('Failed to init pass staking contract:', e);
-        }
+        const TokenABI = [
+            "function balanceOf(address account) view returns (uint256)"
+        ];
         
-        try {
-            tokenContract = new ethers.Contract(
-                CONFIG.token,
-                ERC20_ABI,
-                provider
-            );
-        } catch (e) {
-            console.warn('Failed to init token contract:', e);
-        }
-
-        // Default values
         let legendStaked = 0;
         let passStaked = 0;
-        let legendDistributed = 0;
-        let passDistributed = 0;
         let legendBalance = 0;
         let passBalance = 0;
+        let legendDistributed = 0;
+        let passDistributed = 0;
         
-        // Fetch real data
-        try {
-            if (legendStakingContract) {
-                const legendTotalStaked = await legendStakingContract.totalStaked().catch(() => 0n);
-                legendStaked = Number(legendTotalStaked);
-            }
-        } catch (e) {
-            console.warn('Failed to fetch legend total staked:', e.message);
-        }
-        
-        try {
-            if (passStakingContract) {
-                const passTotalStaked = await passStakingContract.totalStaked().catch(() => 0n);
-                passStaked = Number(passTotalStaked);
-            }
-        } catch (e) {
-            console.warn('Failed to fetch pass total staked:', e.message);
-        }
-        
-        // Get total rewards distributed
-        try {
-            if (legendStakingContract && legendStakingContract.totalRewardsDistributed) {
-                const legendTotalRewards = await legendStakingContract.totalRewardsDistributed().catch(() => null);
-                if (legendTotalRewards !== null) {
-                    legendDistributed = Number(ethers.formatUnits(legendTotalRewards, 18));
+        // Helper function to try multiple methods
+        async function getStakedAmount(contract, methods) {
+            for (const method of methods) {
+                try {
+                    if (typeof contract[method] === 'function') {
+                        const result = await contract[method]();
+                        return Number(result);
+                    }
+                } catch(e) {
+                    // Try next method
                 }
             }
-        } catch (e) {
-            console.log('totalRewardsDistributed not available for legend');
-        }
-
-        try {
-            if (passStakingContract && passStakingContract.totalRewardsDistributed) {
-                const passTotalRewards = await passStakingContract.totalRewardsDistributed().catch(() => null);
-                if (passTotalRewards !== null) {
-                    passDistributed = Number(ethers.formatUnits(passTotalRewards, 18));
-                }
-            }
-        } catch (e) {
-            console.log('totalRewardsDistributed not available for pass');
+            return null;
         }
         
-        // Get remaining rewards in contracts
+        const methodsToTry = [
+            'totalStaked',
+            'totalStakedAmount', 
+            'stakedTotal',
+            'getTotalStaked',
+            'totalStakedNFTs',
+            'stakedCount',
+            'totalStakedTokens'
+        ];
+        
+        // Try to get legend staked count
         try {
-            if (tokenContract) {
-                const [legendContractBalance, passContractBalance] = await Promise.all([
-                    tokenContract.balanceOf(CONFIG.staking["L3G3NDS"]).catch(() => 0n),
-                    tokenContract.balanceOf(CONFIG.staking["L3G3NDARY Pass"]).catch(() => 0n)
-                ]);
-                legendBalance = Number(ethers.formatUnits(legendContractBalance, 18));
-                passBalance = Number(ethers.formatUnits(passContractBalance, 18));
+            const contract = new ethers.Contract(legendStakingAddr, ExtendedStakingABI, provider);
+            const total = await getStakedAmount(contract, methodsToTry);
+            if (total !== null && total > 0) {
+                legendStaked = total;
+                console.log('Legend staked:', legendStaked);
+            } else {
+                console.warn('Could not fetch legend staked count, trying alternative...');
+                // Try to get from event logs or another method
             }
         } catch (e) {
-            console.warn('Failed to fetch contract balances:', e.message);
+            console.warn('Failed to fetch legend staked:', e.message);
         }
+        
+        // Try to get pass staked count
+        try {
+            const contract = new ethers.Contract(passStakingAddr, ExtendedStakingABI, provider);
+            const total = await getStakedAmount(contract, methodsToTry);
+            if (total !== null && total > 0) {
+                passStaked = total;
+                console.log('Pass staked:', passStaked);
+            } else {
+                console.warn('Could not fetch pass staked count');
+            }
+        } catch (e) {
+            console.warn('Failed to fetch pass staked:', e.message);
+        }
+        
+        // Get token balances in staking contracts
+        try {
+            const tokenContract = new ethers.Contract(tokenAddr, TokenABI, provider);
+            
+            const legendBalanceRaw = await tokenContract.balanceOf(legendStakingAddr).catch(() => 0n);
+            const passBalanceRaw = await tokenContract.balanceOf(passStakingAddr).catch(() => 0n);
+            
+            legendBalance = Number(ethers.formatUnits(legendBalanceRaw, 18));
+            passBalance = Number(ethers.formatUnits(passBalanceRaw, 18));
+            
+            console.log('Contract balances:', { legendBalance, passBalance });
+        } catch (e) {
+            console.warn('Failed to fetch token balances:', e.message);
+        }
+        
+        // Try to get distributed rewards
+        try {
+            const legendContract = new ethers.Contract(legendStakingAddr, ExtendedStakingABI, provider);
+            const legendTotal = await legendContract.totalRewardsDistributed().catch(() => null);
+            if (legendTotal !== null) {
+                legendDistributed = Number(ethers.formatUnits(legendTotal, 18));
+            }
+        } catch(e) {}
+        
+        try {
+            const passContract = new ethers.Contract(passStakingAddr, ExtendedStakingABI, provider);
+            const passTotal = await passContract.totalRewardsDistributed().catch(() => null);
+            if (passTotal !== null) {
+                passDistributed = Number(ethers.formatUnits(passTotal, 18));
+            }
+        } catch(e) {}
         
         // Calculate daily pools
-        const legendDailyPool = legendStaked * CONFIG.rewards["L3G3NDS"].dailyPerNFT;
-        const passDailyPool = passStaked * CONFIG.rewards["PASS"].dailyPerNFT;
+        const dailyPerNFTLegend = CONFIG.rewards["L3G3NDS"].dailyPerNFT || 1000;
+        const dailyPerNFTPass = CONFIG.rewards["PASS"].dailyPerNFT || 2500;
         
-        // Calculate totals
+        const legendDailyPool = legendStaked * dailyPerNFTLegend;
+        const passDailyPool = passStaked * dailyPerNFTPass;
         const totalStakedNFTs = legendStaked + passStaked;
         
         // Calculate remaining rewards
-        const legendRemaining = Math.max(0, CONFIG.rewards["L3G3NDS"].total - legendDistributed);
-        const passRemaining = Math.max(0, CONFIG.rewards["PASS"].total - passDistributed);
+        const legendTotalAllocated = CONFIG.rewards["L3G3NDS"].total || 150000000;
+        const passTotalAllocated = CONFIG.rewards["PASS"].total || 500000000;
+        const legendRemaining = Math.max(0, legendTotalAllocated - legendDistributed);
+        const passRemaining = Math.max(0, passTotalAllocated - passDistributed);
         
-        // Update UI elements
-        const totalStakedEl = document.getElementById('totalStaked');
-        if (totalStakedEl) totalStakedEl.textContent = formatNumber(totalStakedNFTs);
+        // Helper to update UI elements safely
+        const updateElement = (id, value, suffix = '') => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = value + suffix;
+        };
         
-        const legendStakedCountEl = document.getElementById('legendStakedCount');
-        if (legendStakedCountEl) legendStakedCountEl.textContent = formatNumber(legendStaked);
+        // Update all UI elements
+        updateElement('totalStaked', formatNumber(totalStakedNFTs));
+        updateElement('legendStakedCount', formatNumber(legendStaked));
+        updateElement('passStakedCount', formatNumber(passStaked));
+        updateElement('dailyRewards', formatNumber(legendDailyPool));
+        updateElement('passRewards', formatNumber(passDailyPool));
         
-        const passStakedCountEl = document.getElementById('passStakedCount');
-        if (passStakedCountEl) passStakedCountEl.textContent = formatNumber(passStaked);
-        
-        const dailyRewardsEl = document.getElementById('dailyRewards');
-        if (dailyRewardsEl) dailyRewardsEl.textContent = formatNumber(legendDailyPool);
-        
-        const passRewardsEl = document.getElementById('passRewards');
-        if (passRewardsEl) passRewardsEl.textContent = formatNumber(passDailyPool);
-        
-        // Update pool info
-        const legendPoolInfoEl = document.getElementById('legendPoolInfo');
-        if (legendPoolInfoEl) {
-            legendPoolInfoEl.innerHTML = `${formatNumber(legendDailyPool)} LGND/day · <span style="color: #8B5CF6;">⚡ ${formatNumber(legendStaked)} NFTs</span>`;
+        const legendPoolInfo = document.getElementById('legendPoolInfo');
+        if (legendPoolInfo) {
+            legendPoolInfo.innerHTML = `${formatNumber(legendDailyPool)} LGND/day · <span style="color: #8B5CF6;">⚡ ${formatNumber(legendStaked)} NFTs</span>`;
         }
         
-        const passPoolInfoEl = document.getElementById('passPoolInfo');
-        if (passPoolInfoEl) {
-            passPoolInfoEl.innerHTML = `${formatNumber(passDailyPool)} LGND/day · <span style="color: #10B981;">⚡ ${formatNumber(passStaked)} NFTs</span>`;
+        const passPoolInfo = document.getElementById('passPoolInfo');
+        if (passPoolInfo) {
+            passPoolInfo.innerHTML = `${formatNumber(passDailyPool)} LGND/day · <span style="color: #10B981;">⚡ ${formatNumber(passStaked)} NFTs</span>`;
         }
         
-        // Update remaining balances
         const legendRemainingEl = document.getElementById('legendRemaining');
         if (legendRemainingEl) {
             legendRemainingEl.innerHTML = `${formatNumber(Math.floor(legendRemaining))} LGND · <span style="font-size: 0.8rem;">📦 ${formatNumber(Math.floor(legendBalance))} in contract</span>`;
@@ -2443,12 +2493,75 @@
             passRemainingEl.innerHTML = `${formatNumber(Math.floor(passRemaining))} LGND · <span style="font-size: 0.8rem;">📦 ${formatNumber(Math.floor(passBalance))} in contract</span>`;
         }
         
-        console.log('✅ Stats updated:', { totalNFTs: totalStakedNFTs, legendStaked, passStaked });
+        // Cache successful results
+        if (totalStakedNFTs > 0 || legendStaked > 0 || passStaked > 0) {
+            cachedStats = {
+                totalStaked: totalStakedNFTs,
+                legendStaked: legendStaked,
+                passStaked: passStaked,
+                legendDailyPool: legendDailyPool,
+                passDailyPool: passDailyPool,
+                legendBalance: legendBalance,
+                passBalance: passBalance,
+                timestamp: Date.now()
+            };
+            localStorage.setItem('cachedStakingStats', JSON.stringify(cachedStats));
+            lastFetchTime = Date.now();
+        } else if (cachedStats && (Date.now() - lastFetchTime) > 5000) {
+            // If we got zeros but have cached data from before, use cache
+            console.log('Using cached stats (current fetch returned zeros)');
+            updateElement('totalStaked', formatNumber(cachedStats.totalStaked));
+            updateElement('legendStakedCount', formatNumber(cachedStats.legendStaked));
+            updateElement('passStakedCount', formatNumber(cachedStats.passStaked));
+            updateElement('dailyRewards', formatNumber(cachedStats.legendDailyPool));
+            updateElement('passRewards', formatNumber(cachedStats.passDailyPool));
+            
+            if (legendPoolInfo) {
+                legendPoolInfo.innerHTML = `${formatNumber(cachedStats.legendDailyPool)} LGND/day · <span style="color: #8B5CF6;">⚡ ${formatNumber(cachedStats.legendStaked)} NFTs</span>`;
+            }
+            if (passPoolInfo) {
+                passPoolInfo.innerHTML = `${formatNumber(cachedStats.passDailyPool)} LGND/day · <span style="color: #10B981;">⚡ ${formatNumber(cachedStats.passStaked)} NFTs</span>`;
+            }
+        }
+        
+        console.log('✅ Stats updated:', { 
+            totalNFTs: totalStakedNFTs, 
+            legendStaked, 
+            passStaked, 
+            legendBalance, 
+            passBalance,
+            usingProvider: provider ? 'connected' : 'fallback'
+        });
         
     } catch (error) {
         console.error('❌ Error updating stats:', error);
-        const totalStakedEl = document.getElementById('totalStaked');
-        if (totalStakedEl) totalStakedEl.textContent = 'Error';
+        
+        // Try to load from cache on error
+        const cached = localStorage.getItem('cachedStakingStats');
+        if (cached) {
+            try {
+                const data = JSON.parse(cached);
+                const totalStakedEl = document.getElementById('totalStaked');
+                if (totalStakedEl && data.totalStaked > 0) {
+                    totalStakedEl.textContent = formatNumber(data.totalStaked);
+                    document.getElementById('legendStakedCount').textContent = formatNumber(data.legendStaked);
+                    document.getElementById('passStakedCount').textContent = formatNumber(data.passStaked);
+                    document.getElementById('dailyRewards').textContent = formatNumber(data.legendDailyPool);
+                    document.getElementById('passRewards').textContent = formatNumber(data.passDailyPool);
+                }
+            } catch(e) {}
+        }
+        
+        // Show retry button
+        const statsGrid = document.querySelector('.stats-grid');
+        if (statsGrid && !document.getElementById('retryStatsBtn')) {
+            const retryBtn = document.createElement('div');
+            retryBtn.id = 'retryStatsBtn';
+            retryBtn.style.textAlign = 'center';
+            retryBtn.style.marginTop = '1rem';
+            retryBtn.innerHTML = `<button onclick="updateStakingStats()" class="btn btn-small" style="background: var(--accent);">🔄 Retry Loading Stats</button>`;
+            statsGrid.parentNode.insertBefore(retryBtn, statsGrid.nextSibling);
+        }
     }
 }
 
