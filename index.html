@@ -3033,7 +3033,6 @@ async function updateStakingStats() {
                 });
             });
             
-            document.getElementById('connectWalletBtn').onclick = connectWallet;
             document.getElementById('goToStakingBtn').onclick = function() {
                 if (!state.isConnected) {
                     showNotification('Please connect your wallet first', 'warning');
