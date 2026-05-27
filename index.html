@@ -804,151 +804,7 @@
             </div>
         </section>
 
-        <!-- MEV Protection Section -->
-<section class="section" id="mev-protection">
-    <h2 class="section-title">🛡️ MEV Protection Guide</h2>
-    <p style="text-align: center; color: #CBD5E1; margin-bottom: 2rem; font-size: 1.1rem;">
-        Protect your LGND transactions from sandwich attacks and frontrunning bots
-    </p>
-    
-    <div class="tokenomics-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
         
-        <!-- Why Protect Card -->
-        <div class="tokenomics-card">
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 1.5rem;">
-                <div style="background: rgba(239, 68, 68, 0.2); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                    ⚠️
-                </div>
-                <div>
-                    <h3 style="color: #EF4444; margin-bottom: 0.25rem;">The Problem</h3>
-                    <div style="color: #94A3B8; font-size: 0.85rem;">MEV Bots target public transactions</div>
-                </div>
-            </div>
-            <div style="color: #94A3B8; margin-bottom: 1rem;">
-                <p>Bots scan the public mempool and attack large transactions, forcing you to overpay. The bot <strong>jaredfromsubway.eth</strong> alone has extracted over $40M from traders.</p>
-            </div>
-            <div style="background: rgba(239, 68, 68, 0.1); padding: 1rem; border-radius: 10px; border: 1px solid rgba(239, 68, 68, 0.3);">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>Average loss per attack</span>
-                    <span style="color: #EF4444; font-weight: bold;">5-15%</span>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                    <span>Total MEV extracted</span>
-                    <span style="color: #EF4444; font-weight: bold;">$2B+</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Solution Card -->
-        <div class="tokenomics-card">
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 1.5rem;">
-                <div style="background: rgba(16, 185, 129, 0.2); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                    ✅
-                </div>
-                <div>
-                    <h3 style="color: #10B981; margin-bottom: 0.25rem;">The Solution</h3>
-                    <div style="color: #94A3B8; font-size: 0.85rem;">Flashbots Protect RPC</div>
-                </div>
-            </div>
-            <div style="color: #94A3B8; margin-bottom: 1rem;">
-                <p>Send transactions directly to validators, bypassing the public mempool. Your transactions become invisible to bots.</p>
-            </div>
-            <div style="background: rgba(16, 185, 129, 0.1); padding: 1rem; border-radius: 10px; border: 1px solid rgba(16, 185, 129, 0.3);">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>Protected transactions</span>
-                    <span style="color: #10B981; font-weight: bold;">57M+</span>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                    <span>Refunds earned</span>
-                    <span style="color: #10B981; font-weight: bold;">6,716+ ETH</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- How To Card -->
-        <div class="tokenomics-card" style="grid-column: span 2; max-width: 600px; margin: 0 auto;">
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 1.5rem;">
-                <div style="background: rgba(139, 92, 246, 0.2); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                    ⚙️
-                </div>
-                <div>
-                    <h3 style="color: var(--primary); margin-bottom: 0.25rem;">One-Time Setup</h3>
-                    <div style="color: #94A3B8; font-size: 0.85rem;">Takes 30 seconds</div>
-                </div>
-            </div>
-            
-            <div style="background: rgba(0, 0, 0, 0.2); padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem;">
-                <h4 style="color: white; margin-bottom: 1rem;">📱 MetaMask Settings</h4>
-                
-                <div style="background: rgba(139, 92, 246, 0.1); padding: 1rem; border-radius: 8px; border: 1px solid rgba(139, 92, 246, 0.3); margin-bottom: 1rem;">
-                    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 8px; font-family: monospace; font-size: 0.9rem;">
-                        <span style="color: #8B5CF6;">Network:</span>
-                        <span style="color: white;">Ethereum Mainnet</span>
-                        
-                        <span style="color: #8B5CF6;">RPC URL:</span>
-                        <span style="color: #F59E0B; word-break: break-all;">https://rpc.flashbots.net</span>
-                        
-                        <span style="color: #8B5CF6;">Chain ID:</span>
-                        <span style="color: white;">1</span>
-                        
-                        <span style="color: #8B5CF6;">Symbol:</span>
-                        <span style="color: white;">ETH</span>
-                        
-                        <span style="color: #8B5CF6;">Explorer:</span>
-                        <span style="color: white;">https://etherscan.io</span>
-                    </div>
-                </div>
-                
-                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
-            </div> 
-         </div>
-            
-            <div style="background: rgba(245, 158, 11, 0.1); padding: 1rem; border-radius: 8px; border: 1px solid rgba(245, 158, 11, 0.3);">
-                <div style="display: flex; align-items: center; gap: 8px; color: #F59E0B; margin-bottom: 0.5rem;">
-                    <span>⚠️</span>
-                    <strong>Important</strong>
-                </div>
-                <p style="color: #94A3B8; font-size: 0.9rem; margin: 0;">
-                    Don't switch RPC while a transaction is pending. Wait for confirmation (1-2 minutes).
-                </p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Quick Stats & Links -->
-    <div style="margin-top: 2rem; text-align: center;">
-        <div style="display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-            <a href="https://flashbots.net/" target="_blank" rel="noopener noreferrer" class="link-btn">
-                <span>🔗</span>
-                <span>Flashbots Official</span>
-            </a>
-            <a href="https://docs.flashbots.net/flashbots-protect/overview" target="_blank" rel="noopener noreferrer" class="link-btn">
-                <span>📚</span>
-                <span>Documentation</span>
-            </a>
-            <a href="https://protect.flashbots.net/" target="_blank" rel="noopener noreferrer" class="link-btn">
-                <span>🔍</span>
-                <span>Check Transaction Status</span>
-            </a>
-            <a href="https://mempool.space/" target="_blank" rel="noopener noreferrer" class="link-btn">
-                <span>👁️</span>
-                <span>Mempool Explorer</span>
-            </a>
-        </div>
-    </div>
-    
-   <!-- Security Badge -->
-<div style="margin-top: 2rem; display: flex; justify-content: center; width: 100%;">
-    <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(16, 185, 129, 0.2)); border-radius: 50px; padding: 1rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; max-width: 800px; margin: 0 auto; text-align: center;">
-        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;">
-            <span style="color: #10B981;">✅</span>
-            <span><strong>Your wallet is protected</strong> after Flashbots RPC setup</span>
-        </div>
-        <div style="color: #94A3B8; font-size: 0.85rem; text-align: center;">
-            Works with DEXTools, Etherscan and all interfaces — but each user must configure their own wallet
-        </div>
-    </div>
-</div>
 
         <!-- Tokenomics Section -->
        <section class="section">
@@ -2230,6 +2086,152 @@ window.eliteClaimRewards = eliteClaimRewards;
         }
     }
 </style>
+
+        <!-- MEV Protection Section -->
+<section class="section" id="mev-protection">
+    <h2 class="section-title">🛡️ MEV Protection Guide</h2>
+    <p style="text-align: center; color: #CBD5E1; margin-bottom: 2rem; font-size: 1.1rem;">
+        Protect your LGND transactions from sandwich attacks and frontrunning bots
+    </p>
+    
+    <div class="tokenomics-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        
+        <!-- Why Protect Card -->
+        <div class="tokenomics-card">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 1.5rem;">
+                <div style="background: rgba(239, 68, 68, 0.2); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                    ⚠️
+                </div>
+                <div>
+                    <h3 style="color: #EF4444; margin-bottom: 0.25rem;">The Problem</h3>
+                    <div style="color: #94A3B8; font-size: 0.85rem;">MEV Bots target public transactions</div>
+                </div>
+            </div>
+            <div style="color: #94A3B8; margin-bottom: 1rem;">
+                <p>Bots scan the public mempool and attack large transactions, forcing you to overpay. The bot <strong>jaredfromsubway.eth</strong> alone has extracted over $40M from traders.</p>
+            </div>
+            <div style="background: rgba(239, 68, 68, 0.1); padding: 1rem; border-radius: 10px; border: 1px solid rgba(239, 68, 68, 0.3);">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <span>Average loss per attack</span>
+                    <span style="color: #EF4444; font-weight: bold;">5-15%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Total MEV extracted</span>
+                    <span style="color: #EF4444; font-weight: bold;">$2B+</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Solution Card -->
+        <div class="tokenomics-card">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 1.5rem;">
+                <div style="background: rgba(16, 185, 129, 0.2); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                    ✅
+                </div>
+                <div>
+                    <h3 style="color: #10B981; margin-bottom: 0.25rem;">The Solution</h3>
+                    <div style="color: #94A3B8; font-size: 0.85rem;">Flashbots Protect RPC</div>
+                </div>
+            </div>
+            <div style="color: #94A3B8; margin-bottom: 1rem;">
+                <p>Send transactions directly to validators, bypassing the public mempool. Your transactions become invisible to bots.</p>
+            </div>
+            <div style="background: rgba(16, 185, 129, 0.1); padding: 1rem; border-radius: 10px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <span>Protected transactions</span>
+                    <span style="color: #10B981; font-weight: bold;">57M+</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Refunds earned</span>
+                    <span style="color: #10B981; font-weight: bold;">6,716+ ETH</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- How To Card -->
+        <div class="tokenomics-card" style="grid-column: span 2; max-width: 600px; margin: 0 auto;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 1.5rem;">
+                <div style="background: rgba(139, 92, 246, 0.2); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                    ⚙️
+                </div>
+                <div>
+                    <h3 style="color: var(--primary); margin-bottom: 0.25rem;">One-Time Setup</h3>
+                    <div style="color: #94A3B8; font-size: 0.85rem;">Takes 30 seconds</div>
+                </div>
+            </div>
+            
+            <div style="background: rgba(0, 0, 0, 0.2); padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem;">
+                <h4 style="color: white; margin-bottom: 1rem;">📱 MetaMask Settings</h4>
+                
+                <div style="background: rgba(139, 92, 246, 0.1); padding: 1rem; border-radius: 8px; border: 1px solid rgba(139, 92, 246, 0.3); margin-bottom: 1rem;">
+                    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 8px; font-family: monospace; font-size: 0.9rem;">
+                        <span style="color: #8B5CF6;">Network:</span>
+                        <span style="color: white;">Ethereum Mainnet</span>
+                        
+                        <span style="color: #8B5CF6;">RPC URL:</span>
+                        <span style="color: #F59E0B; word-break: break-all;">https://rpc.flashbots.net</span>
+                        
+                        <span style="color: #8B5CF6;">Chain ID:</span>
+                        <span style="color: white;">1</span>
+                        
+                        <span style="color: #8B5CF6;">Symbol:</span>
+                        <span style="color: white;">ETH</span>
+                        
+                        <span style="color: #8B5CF6;">Explorer:</span>
+                        <span style="color: white;">https://etherscan.io</span>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+            </div> 
+         </div>
+            
+            <div style="background: rgba(245, 158, 11, 0.1); padding: 1rem; border-radius: 8px; border: 1px solid rgba(245, 158, 11, 0.3);">
+                <div style="display: flex; align-items: center; gap: 8px; color: #F59E0B; margin-bottom: 0.5rem;">
+                    <span>⚠️</span>
+                    <strong>Important</strong>
+                </div>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin: 0;">
+                    Don't switch RPC while a transaction is pending. Wait for confirmation (1-2 minutes).
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Quick Stats & Links -->
+    <div style="margin-top: 2rem; text-align: center;">
+        <div style="display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+            <a href="https://flashbots.net/" target="_blank" rel="noopener noreferrer" class="link-btn">
+                <span>🔗</span>
+                <span>Flashbots Official</span>
+            </a>
+            <a href="https://docs.flashbots.net/flashbots-protect/overview" target="_blank" rel="noopener noreferrer" class="link-btn">
+                <span>📚</span>
+                <span>Documentation</span>
+            </a>
+            <a href="https://protect.flashbots.net/" target="_blank" rel="noopener noreferrer" class="link-btn">
+                <span>🔍</span>
+                <span>Check Transaction Status</span>
+            </a>
+            <a href="https://mempool.space/" target="_blank" rel="noopener noreferrer" class="link-btn">
+                <span>👁️</span>
+                <span>Mempool Explorer</span>
+            </a>
+        </div>
+    </div>
+    
+   <!-- Security Badge -->
+<div style="margin-top: 2rem; display: flex; justify-content: center; width: 100%;">
+    <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(16, 185, 129, 0.2)); border-radius: 50px; padding: 1rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; max-width: 800px; margin: 0 auto; text-align: center;">
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;">
+            <span style="color: #10B981;">✅</span>
+            <span><strong>Your wallet is protected</strong> after Flashbots RPC setup</span>
+        </div>
+        <div style="color: #94A3B8; font-size: 0.85rem; text-align: center;">
+            Works with DEXTools, Etherscan and all interfaces — but each user must configure their own wallet
+        </div>
+    </div>
+</div>
     
         
 
