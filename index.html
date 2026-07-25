@@ -583,358 +583,7 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
-        /* ============================================================
-           ANCIENT GREEK THEME — replaces previous visual upgrade
-           ============================================================ */
-        :root {
-            --gold: #C9A227;
-            --gold-bright: #E8C468;
-            --bronze: #8B6B3D;
-            --patina: #5E7A67;
-            --terracotta: #A8502E;
-            --marble: #EDE6D0;
-            --ink: #14110B;
-            --font-display: 'Cinzel', serif;
-            --font-body: 'Cormorant Garamond', 'Georgia', serif;
-            --font-mono: 'Space Mono', 'Courier New', monospace;
-        }
-
-        #lgndGreekTheme {
-            filter: sepia(0.5) saturate(1.55) hue-rotate(-10deg) brightness(0.95) contrast(1.07);
-            position: relative;
-            background: var(--ink);
-            font-family: var(--font-body);
-        }
-
-        #lgndGreekTheme::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.5;
-            mix-blend-mode: overlay;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.79  0 0 0 0 0.63  0 0 0 0 0.29  0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-        }
-
-        #lgndGreekTheme > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Typography */
-        #lgndGreekTheme h1,
-        #lgndGreekTheme h2,
-        #lgndGreekTheme h3,
-        #lgndGreekTheme h4,
-        #lgndGreekTheme .section-title,
-        #lgndGreekTheme .logo {
-            font-family: var(--font-display) !important;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-
-        #lgndGreekTheme .hero h1 {
-            font-size: 4.4rem;
-            letter-spacing: 0.12em;
-        }
-
-        #lgndGreekTheme .contract-address,
-        #lgndGreekTheme .wallet-address,
-        #lgndGreekTheme input,
-        #lgndGreekTheme code {
-            font-family: var(--font-mono) !important;
-        }
-
-        #lgndGreekTheme .btn {
-            font-family: var(--font-display);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        /* Meander */
-        .lgnd-meander {
-            height: 22px;
-            width: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='22' viewBox='0 0 40 22'%3E%3Cpath fill='none' stroke='%23C9A227' stroke-width='2' d='M0,20 L0,4 L8,4 L8,12 L16,12 L16,4 L24,4 L24,16 L32,16 L32,4 L40,4'/%3E%3C/svg%3E");
-            background-repeat: repeat-x;
-            background-size: 40px 22px;
-            opacity: 0.55;
-            animation: lgndMeanderDrift 28s linear infinite;
-        }
-
-        @keyframes lgndMeanderDrift {
-            from { background-position-x: 0; }
-            to { background-position-x: 800px; }
-        }
-
-        /* Hero */
-        #lgndGreekTheme .hero {
-            position: relative;
-            overflow: hidden;
-            isolation: isolate;
-        }
-
-        #lgndGreekTheme .hero::before {
-            content: "";
-            position: absolute;
-            inset: -20%;
-            z-index: -1;
-            background: radial-gradient(circle at 22% 30%, rgba(201, 162, 39, 0.25), transparent 45%),
-                        radial-gradient(circle at 78% 22%, rgba(94, 122, 103, 0.18), transparent 45%),
-                        radial-gradient(circle at 50% 85%, rgba(168, 80, 46, 0.12), transparent 45%);
-            animation: lgndTorchFlicker 7s ease-in-out infinite alternate;
-            filter: blur(14px);
-        }
-
-        @keyframes lgndTorchFlicker {
-            0%   { opacity: 0.85; transform: scale(1); }
-            30%  { opacity: 1; transform: scale(1.04); }
-            60%  { opacity: 0.9; transform: scale(0.98); }
-            100% { opacity: 1; transform: scale(1.05); }
-        }
-
-        #lgndGreekTheme .hero h1 {
-            position: relative;
-            display: inline-block;
-            animation: lgndChiselIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
-            text-shadow: 0 0 30px rgba(201, 162, 39, 0.35), 0 2px 0 rgba(0,0,0,0.4);
-        }
-
-        #lgndGreekTheme .hero h1::before,
-        #lgndGreekTheme .hero h1::after {
-            content: "❧";
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.6rem;
-            color: var(--gold);
-            opacity: 0.7;
-        }
-        #lgndGreekTheme .hero h1::before { left: -2.2rem; }
-        #lgndGreekTheme .hero h1::after { right: -2.2rem; transform: translateY(-50%) scaleX(-1); }
-
-        @keyframes lgndChiselIn {
-            from { opacity: 0; transform: translateY(18px) scale(0.98); letter-spacing: 0.3em; }
-            to { opacity: 1; transform: translateY(0) scale(1); letter-spacing: 0.12em; }
-        }
-
-        #lgndGreekTheme .hero .links {
-            animation: lgndFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
-        }
-
-        @keyframes lgndFadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Verification Badge */
-        #lgndGreekTheme .domain-verification,
-        #lgndGreekTheme .security-badge {
-            border-width: 1.5px !important;
-            font-family: var(--font-display);
-            letter-spacing: 0.03em;
-        }
-
-        #lgndGreekTheme #securityStatus {
-            position: relative;
-        }
-
-        #lgndGreekTheme #securityStatus::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 20px;
-            background: rgba(201, 162, 39, 0.35);
-            animation: lgndSealPulse 2.6s ease-out infinite;
-            z-index: -1;
-        }
-
-        @keyframes lgndSealPulse {
-            0%   { opacity: 0.6; transform: scale(1); }
-            100% { opacity: 0; transform: scale(1.4); }
-        }
-
-        /* Stats with coin relief */
-        #lgndGreekTheme .stat-item {
-            border-radius: 18px;
-            border: 1px solid rgba(201, 162, 39, 0.25) !important;
-            background: radial-gradient(circle at 50% 15%, rgba(201, 162, 39, 0.10), transparent 60%),
-                        rgba(0, 0, 0, 0.35) !important;
-            padding-top: 3.2rem !important;
-            position: relative;
-        }
-
-        #lgndGreekTheme .stat-item::before {
-            content: "";
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            border: 2px solid rgba(201, 162, 39, 0.55);
-            box-shadow: inset 0 0 0 3px rgba(20, 17, 11, 0.6),
-                        inset 0 2px 4px rgba(232, 196, 104, 0.25),
-                        0 2px 6px rgba(0,0,0,0.4);
-            background: repeating-radial-gradient(circle at center, rgba(201,162,39,0.12) 0 2px, transparent 2px 4px);
-            opacity: 0.7;
-            pointer-events: none;
-        }
-
-        #lgndGreekTheme .stat-value {
-            font-family: var(--font-display) !important;
-            text-shadow: 0 0 12px rgba(201, 162, 39, 0.3);
-        }
-
-        #lgndGreekTheme .security-badge,
-        #lgndGreekTheme .contract-address {
-            transition: transform 0.4s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-        #lgndGreekTheme .security-badge:hover {
-            transform: perspective(300px) rotateY(8deg);
-            box-shadow: 0 6px 18px rgba(201, 162, 39, 0.25);
-        }
-
-        /* Card shine */
-        #lgndGreekTheme .staking-card,
-        #lgndGreekTheme .tokenomics-card,
-        #lgndGreekTheme .feature-card,
-        #lgndGreekTheme .proof-card,
-        #lgndGreekTheme .contract-item {
-            position: relative;
-            overflow: hidden;
-        }
-
-        #lgndGreekTheme .staking-card::after,
-        #lgndGreekTheme .tokenomics-card::after,
-        #lgndGreekTheme .feature-card::after,
-        #lgndGreekTheme .proof-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -150%;
-            width: 55%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(232, 196, 104, 0.08), transparent);
-            transform: skewX(-20deg);
-            transition: left 0.8s ease;
-            pointer-events: none;
-        }
-
-        #lgndGreekTheme .staking-card:hover::after,
-        #lgndGreekTheme .tokenomics-card:hover::after,
-        #lgndGreekTheme .feature-card:hover::after,
-        #lgndGreekTheme .proof-card:hover::after {
-            left: 150%;
-        }
-
-        /* Buttons */
-        #lgndGreekTheme .btn-primary {
-            position: relative;
-        }
-
-        #lgndGreekTheme .btn-primary::before {
-            content: "";
-            position: absolute;
-            inset: -2px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, var(--gold), var(--terracotta));
-            opacity: 0;
-            z-index: -1;
-            filter: blur(12px);
-            transition: opacity 0.3s ease;
-        }
-
-        #lgndGreekTheme .btn-primary:hover::before {
-            opacity: 0.65;
-        }
-
-        /* Section titles */
-        #lgndGreekTheme .section-title {
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        #lgndGreekTheme .section-title::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
-
-        /* Header */
-        #lgndGreekTheme header {
-            border-bottom: 1px solid rgba(201, 162, 39, 0.25) !important;
-            transition: padding 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        #lgndGreekTheme header.lgnd-scrolled {
-            padding: 0.6rem 0;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
-        }
-
-        /* Scrollbar */
-        html { scroll-behavior: smooth; }
-
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: var(--ink); }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--gold), var(--bronze));
-            border-radius: 10px;
-        }
-
-        #lgndScrollProgress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            width: 0%;
-            background: linear-gradient(90deg, var(--gold), var(--gold-bright), var(--terracotta));
-            z-index: 100000;
-            transition: width 0.1s ease-out;
-        }
-
-        /* Scroll reveal */
-        .lgnd-reveal {
-            opacity: 0;
-            transform: translateY(26px);
-            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .lgnd-reveal.lgnd-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            #lgndGreekTheme .hero h1 { font-size: 2.6rem; }
-            #lgndGreekTheme .hero h1::before,
-            #lgndGreekTheme .hero h1::after { display: none; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            #lgndGreekTheme .hero::before { animation: none; }
-            #lgndGreekTheme .hero h1,
-            #lgndGreekTheme .hero .links { animation: none; opacity: 1; transform: none; }
-            .lgnd-reveal { opacity: 1; transform: none; transition: none; }
-            #lgndGreekTheme #securityStatus::before { animation: none; }
-            .lgnd-meander { animation: none; }
-        }
     </style>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -1386,7 +1035,7 @@
         </section>
 
         <!-- Security & Transparency Section -->
-        <section class="section" id="security-transparency">
+        <section class="section">
             <h2 class="section-title">🔒 Security & Transparency</h2>
             <div class="tokenomics-grid">
                 <div class="tokenomics-card">
@@ -1439,7 +1088,7 @@
         
 
         <!-- Tokenomics Section -->
-       <section class="section" id="tokenomics">
+       <section class="section">
     <h2 class="section-title">📊 LGND Tokenomics</h2>
     <p style="text-align: center; color: #CBD5E1; margin-bottom: 2rem; font-size: 1.1rem;">
         Total Supply: 1,000,000,000 LGND (1 Billion)
@@ -1604,7 +1253,7 @@
         </section>
 
     <!-- Contract Addresses Section -->
-<section class="section" id="contract-addresses">
+<section class="section">
     <h2 class="section-title">📋 Smart Contract Addresses</h2>
     <div class="contract-list">
         <!-- LGND Token Contract -->
@@ -1820,7 +1469,7 @@
         
         
         <!-- Staking Section -->
-        <section class="staking-section" id="staking">
+        <section class="staking-section">
             <h2 class="section-title" style="color: white;">🎯 NFT Staking Platform</h2>
             
             <!-- Real-time statistics -->
@@ -2845,7 +2494,7 @@ window.eliteClaimRewards = eliteClaimRewards;
 </style>
     
                         <!-- Community Section -->
-        <section class="section" id="community">
+        <section class="section">
             <h2 class="section-title">🌍 Join Our Community</h2>
             <div style="text-align: center; color: #94A3B8; margin-bottom: 2rem;">
                 <p style="max-width: 600px; margin: 0 auto;">
@@ -4020,8 +3669,7 @@ window.eliteClaimRewards = eliteClaimRewards;
             });
         }
 
-        // Main initialization - combined all load handlers
-        window.addEventListener('load', async function() {
+        window.addEventListener('load', async () => {
             console.log('🎮 L3G3NDARY website initializing...');
             
             document.querySelectorAll('.contract-address').forEach(el => {
@@ -4249,9 +3897,9 @@ window.eliteClaimRewards = eliteClaimRewards;
         <span>🔍</span>
         <span class="tooltip">Proof</span>
     </div>
-    <div class="floating-nav-item" data-section="manifesto">
-        <span>📜</span>
-        <span class="tooltip">Manifesto</span>
+    <div class="floating-nav-item" data-section="roadmap">
+        <span>🗺️</span>
+        <span class="tooltip">Roadmap</span>
     </div>
     <div class="floating-nav-item" data-section="staking">
         <span>🎯</span>
@@ -4298,8 +3946,6 @@ window.eliteClaimRewards = eliteClaimRewards;
                         section = document.querySelector('.staking-section');
                     } else if (sectionId === 'community') {
                         section = document.querySelector('.links')?.closest('.section');
-                    } else if (sectionId === 'manifesto') {
-                        section = document.getElementById('manifesto');
                     }
                 }
                 
@@ -4331,7 +3977,7 @@ window.eliteClaimRewards = eliteClaimRewards;
                 { id: 'tokenomics', element: document.querySelector('.tokenomics-grid')?.closest('.section') },
                 { id: 'contract-addresses', element: document.querySelector('.contract-list')?.closest('.section') },
                 { id: 'proof-section', element: document.getElementById('proof-section') },
-                { id: 'manifesto', element: document.getElementById('manifesto') },
+                { id: 'roadmap', element: document.querySelector('.tokenomics-card')?.closest('.section') },
                 { id: 'staking', element: document.querySelector('.staking-section') },
                 { id: 'lockdown-campaign', element: document.getElementById('lockdown-campaign') },
                 { id: 'community', element: document.querySelector('.links')?.closest('.section') }
@@ -4379,126 +4025,6 @@ window.eliteClaimRewards = eliteClaimRewards;
         
         setTimeout(updateActiveSection, 500);
     })();
-</script>
-
-<!-- Ancient Greek Theme - Wraps everything and applies color filter -->
-<div id="lgndScrollProgress"></div>
-
-<script>
-(function () {
-    // Wrap all content in themed container
-    var wrapper = document.createElement('div');
-    wrapper.id = 'lgndGreekTheme';
-    while (document.body.firstChild) {
-        wrapper.appendChild(document.body.firstChild);
-    }
-    document.body.appendChild(wrapper);
-
-    // Insert meander decorative bands
-    var header = wrapper.querySelector('header');
-    if (header) {
-        header.insertAdjacentHTML('afterend', '<div class="lgnd-meander" aria-hidden="true"></div>');
-    }
-    var hero = wrapper.querySelector('.hero');
-    if (hero && hero.parentNode) {
-        hero.insertAdjacentHTML('afterend', '<div class="lgnd-meander" aria-hidden="true"></div>');
-    }
-    var footer = wrapper.querySelector('footer');
-    if (footer) {
-        footer.insertAdjacentHTML('beforebegin', '<div class="lgnd-meander" aria-hidden="true"></div>');
-    }
-
-    // Scroll progress bar
-    var progressBar = document.getElementById('lgndScrollProgress');
-    function updateScrollProgress() {
-        var scrollTop = window.scrollY;
-        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        if (progressBar) progressBar.style.width = pct + '%';
-    }
-    window.addEventListener('scroll', updateScrollProgress, { passive: true });
-    updateScrollProgress();
-
-    // Header shrink on scroll
-    var headerEl = wrapper.querySelector('header');
-    function updateHeaderState() {
-        if (!headerEl) return;
-        if (window.scrollY > 40) {
-            headerEl.classList.add('lgnd-scrolled');
-        } else {
-            headerEl.classList.remove('lgnd-scrolled');
-        }
-    }
-    window.addEventListener('scroll', updateHeaderState, { passive: true });
-    updateHeaderState();
-
-    // Scroll reveal
-    function initScrollReveal() {
-        var targets = wrapper.querySelectorAll(
-            '.section, .staking-section, .tokenomics-card, .feature-card, ' +
-            '.proof-card, .stat-item, .contract-item, .staking-card'
-        );
-        targets.forEach(function (el) { el.classList.add('lgnd-reveal'); });
-
-        if (!('IntersectionObserver' in window)) {
-            targets.forEach(function (el) { el.classList.add('lgnd-visible'); });
-            return;
-        }
-
-        var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('lgnd-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-        targets.forEach(function (el) { observer.observe(el); });
-    }
-
-    // Stats loading pulse
-    function markStatsLoading() {
-        var statIds = ['totalStaked', 'dailyRewards', 'passRewards'];
-        statIds.forEach(function(id) {
-            var el = document.getElementById(id);
-            if (el) el.classList.add('lgnd-loading');
-        });
-
-        var check = setInterval(function() {
-            var stillLoading = false;
-            statIds.forEach(function(id) {
-                var el = document.getElementById(id);
-                if (!el) return;
-                if (el.textContent.trim() === '0' || el.textContent.trim() === '') {
-                    stillLoading = true;
-                } else {
-                    el.classList.remove('lgnd-loading');
-                }
-            });
-            if (!stillLoading) clearInterval(check);
-        }, 800);
-
-        setTimeout(function() {
-            clearInterval(check);
-            statIds.forEach(function(id) {
-                var el = document.getElementById(id);
-                if (el) el.classList.remove('lgnd-loading');
-            });
-        }, 15000);
-    }
-
-    // Run after DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            initScrollReveal();
-            markStatsLoading();
-        });
-    } else {
-        initScrollReveal();
-        markStatsLoading();
-    }
-})();
 </script>
 
 </body>
