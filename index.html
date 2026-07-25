@@ -583,7 +583,225 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+        /* ---------- Typography upgrade ---------- */
+        :root {
+            --font-display: 'Space Grotesk', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            --glow: 0 0 40px rgba(139, 92, 246, 0.35);
+        }
+
+        body {
+            font-family: var(--font-body);
+        }
+
+        h1, h2, .section-title, .logo, .hero h1 {
+            font-family: var(--font-display);
+            letter-spacing: -0.02em;
+        }
+
+        /* ---------- Smooth scrolling & custom scrollbar ---------- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0F172A; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+
+        /* ---------- Scroll progress bar ---------- */
+        #lgndScrollProgress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            z-index: 100000;
+            transition: width 0.1s ease-out;
+        }
+
+        /* ---------- Hero: animated aurora background ---------- */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: -20%;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.25), transparent 45%),
+                radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.18), transparent 45%),
+                radial-gradient(circle at 50% 80%, rgba(245, 158, 11, 0.12), transparent 45%);
+            animation: auroraShift 16s ease-in-out infinite alternate;
+            filter: blur(10px);
+        }
+
+        @keyframes auroraShift {
+            0%   { transform: translate(0, 0) scale(1); }
+            50%  { transform: translate(-3%, 2%) scale(1.08); }
+            100% { transform: translate(2%, -3%) scale(1.03); }
+        }
+
+        .hero h1 {
+            animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+            text-shadow: var(--glow);
+        }
+
+        .hero .links {
+            animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+        }
+
+        @keyframes heroFadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---------- Verified badge: living pulse instead of static ---------- */
+        #securityStatus {
+            position: relative;
+        }
+
+        #securityStatus::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            background: rgba(16, 185, 129, 0.35);
+            animation: verifiedPulse 2.4s ease-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes verifiedPulse {
+            0%   { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.35); }
+        }
+
+        /* ---------- Scroll-reveal (used by the JS block below) ---------- */
+        .lgnd-reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .lgnd-reveal.lgnd-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---------- Card polish: shine sweep + lift ---------- */
+        .stat-item, .staking-card, .tokenomics-card, .feature-card,
+        .proof-card, .contract-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::after, .staking-card::after, .tokenomics-card::after,
+        .feature-card::after, .proof-card::after {
+            content: "";
+            position: absolute;
+            top: 0; left: -150%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.06), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.7s ease;
+            pointer-events: none;
+        }
+
+        .stat-item:hover::after, .staking-card:hover::after, .tokenomics-card:hover::after,
+        .feature-card:hover::after, .proof-card:hover::after {
+            left: 150%;
+        }
+
+        /* ---------- Buttons: soft glow pulse on primary CTA ---------- */
+        .btn-primary {
+            position: relative;
+        }
+
+        .btn-primary::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0;
+            z-index: -1;
+            filter: blur(12px);
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-primary:hover::before {
+            opacity: 0.7;
+        }
+
+        .btn, .link-btn {
+            will-change: transform;
+        }
+
+        /* ---------- Stat numbers: subtle count-in feel while data loads ---------- */
+        .stat-value {
+            font-family: var(--font-display);
+            transition: color 0.3s ease;
+        }
+
+        .stat-value.lgnd-loading {
+            animation: statPulse 1.4s ease-in-out infinite;
+        }
+
+        @keyframes statPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* ---------- Header: shrink + stronger blur on scroll ---------- */
+        header.lgnd-scrolled {
+            padding: 0.6rem 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+        }
+
+        header {
+            transition: padding 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* ---------- Section titles: gradient underline accent ---------- */
+        .section-title {
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 64px;
+            height: 3px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        /* ---------- Respect reduced motion ---------- */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .hero::before { animation: none; }
+            .hero h1, .hero .links { animation: none; opacity: 1; transform: none; }
+            .lgnd-reveal { opacity: 1; transform: none; transition: none; }
+            #securityStatus::before { animation: none; }
+            .stat-value.lgnd-loading { animation: none; }
+        }
     </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -1035,7 +1253,7 @@
         </section>
 
         <!-- Security & Transparency Section -->
-        <section class="section">
+        <section class="section" id="security-transparency">
             <h2 class="section-title">🔒 Security & Transparency</h2>
             <div class="tokenomics-grid">
                 <div class="tokenomics-card">
@@ -1088,7 +1306,7 @@
         
 
         <!-- Tokenomics Section -->
-       <section class="section">
+       <section class="section" id="tokenomics">
     <h2 class="section-title">📊 LGND Tokenomics</h2>
     <p style="text-align: center; color: #CBD5E1; margin-bottom: 2rem; font-size: 1.1rem;">
         Total Supply: 1,000,000,000 LGND (1 Billion)
@@ -1253,7 +1471,7 @@
         </section>
 
     <!-- Contract Addresses Section -->
-<section class="section">
+<section class="section" id="contract-addresses">
     <h2 class="section-title">📋 Smart Contract Addresses</h2>
     <div class="contract-list">
         <!-- LGND Token Contract -->
@@ -1469,7 +1687,7 @@
         
         
         <!-- Staking Section -->
-        <section class="staking-section">
+        <section class="staking-section" id="staking">
             <h2 class="section-title" style="color: white;">🎯 NFT Staking Platform</h2>
             
             <!-- Real-time statistics -->
@@ -2494,7 +2712,7 @@ window.eliteClaimRewards = eliteClaimRewards;
 </style>
     
                         <!-- Community Section -->
-        <section class="section">
+        <section class="section" id="community">
             <h2 class="section-title">🌍 Join Our Community</h2>
             <div style="text-align: center; color: #94A3B8; margin-bottom: 2rem;">
                 <p style="max-width: 600px; margin: 0 auto;">
@@ -3897,9 +4115,9 @@ window.eliteClaimRewards = eliteClaimRewards;
         <span>🔍</span>
         <span class="tooltip">Proof</span>
     </div>
-    <div class="floating-nav-item" data-section="roadmap">
-        <span>🗺️</span>
-        <span class="tooltip">Roadmap</span>
+    <div class="floating-nav-item" data-section="manifesto">
+        <span>📜</span>
+        <span class="tooltip">Manifesto</span>
     </div>
     <div class="floating-nav-item" data-section="staking">
         <span>🎯</span>
@@ -3946,6 +4164,8 @@ window.eliteClaimRewards = eliteClaimRewards;
                         section = document.querySelector('.staking-section');
                     } else if (sectionId === 'community') {
                         section = document.querySelector('.links')?.closest('.section');
+                    } else if (sectionId === 'manifesto') {
+                        section = document.getElementById('manifesto');
                     }
                 }
                 
@@ -3977,7 +4197,7 @@ window.eliteClaimRewards = eliteClaimRewards;
                 { id: 'tokenomics', element: document.querySelector('.tokenomics-grid')?.closest('.section') },
                 { id: 'contract-addresses', element: document.querySelector('.contract-list')?.closest('.section') },
                 { id: 'proof-section', element: document.getElementById('proof-section') },
-                { id: 'roadmap', element: document.querySelector('.tokenomics-card')?.closest('.section') },
+                { id: 'manifesto', element: document.getElementById('manifesto') },
                 { id: 'staking', element: document.querySelector('.staking-section') },
                 { id: 'lockdown-campaign', element: document.getElementById('lockdown-campaign') },
                 { id: 'community', element: document.querySelector('.links')?.closest('.section') }
@@ -4025,6 +4245,99 @@ window.eliteClaimRewards = eliteClaimRewards;
         
         setTimeout(updateActiveSection, 500);
     })();
+</script>
+
+<!-- Animation / Scroll Progress / Reveal -->
+<div id="lgndScrollProgress"></div>
+
+<script>
+(function () {
+    // 1) Scroll progress bar
+    const progressBar = document.getElementById('lgndScrollProgress');
+    function updateScrollProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        if (progressBar) progressBar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    updateScrollProgress();
+
+    // 2) Header shrink
+    const headerEl = document.querySelector('header');
+    function updateHeaderState() {
+        if (!headerEl) return;
+        if (window.scrollY > 40) {
+            headerEl.classList.add('lgnd-scrolled');
+        } else {
+            headerEl.classList.remove('lgnd-scrolled');
+        }
+    }
+    window.addEventListener('scroll', updateHeaderState, { passive: true });
+    updateHeaderState();
+
+    // 3) Scroll-reveal
+    function initScrollReveal() {
+        const targets = document.querySelectorAll(
+            '.section, .staking-section, .tokenomics-card, .feature-card, ' +
+            '.proof-card, .stat-item, .contract-item, .staking-card'
+        );
+
+        targets.forEach(el => el.classList.add('lgnd-reveal'));
+
+        if (!('IntersectionObserver' in window)) {
+            targets.forEach(el => el.classList.add('lgnd-visible'));
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('lgnd-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        targets.forEach(el => observer.observe(el));
+    }
+
+    // 4) Loading pulse for stats
+    function markStatsLoading() {
+        const statIds = ['totalStaked', 'dailyRewards', 'passRewards'];
+        statIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.classList.add('lgnd-loading');
+        });
+
+        const check = setInterval(() => {
+            let stillLoading = false;
+            statIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (el.textContent.trim() === '0' || el.textContent.trim() === '') {
+                    stillLoading = true;
+                } else {
+                    el.classList.remove('lgnd-loading');
+                }
+            });
+            if (!stillLoading) clearInterval(check);
+        }, 800);
+
+        setTimeout(() => {
+            clearInterval(check);
+            statIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.remove('lgnd-loading');
+            });
+        }, 15000);
+    }
+
+    window.addEventListener('load', function () {
+        initScrollReveal();
+        markStatsLoading();
+    });
+})();
 </script>
 
 </body>
