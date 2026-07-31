@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L3G3NDARY | Digital Acropolis</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L3G3NDARY | Black & Gold Acropolis</title>
 
     <!-- Security Headers -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
 
     <!-- For mobile apps -->
-    <meta name="apple-itunes-app" content="app-id=1578821947, app-argument=https://metamask.app.link/dapp/l3g3ndary.com">
-    <meta name="google-play-app" content="app-id=io.metamask">
+    <meta name="apple-itunes-app" content="app-id=1578821947, app-argument=https://metamask.app.link/dapp/l3g3ndary.com" />
+    <meta name="google-play-app" content="app-id=io.metamask" />
 
     <!-- Ethers.js -->
-    <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.0/dist/ethers.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.0/dist/ethers.umd.min.js">
+    </script>
 
-    <!-- Font Awesome 6 (free) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <!-- Google Fonts: Cinzel Decorative + Cormorant Garamond -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
     <style>
-        /* ============================================= */
-        /*  ANTIQUE DESIGN SYSTEM – L3G3NDARY ACROPOLIS  */
-        /* ============================================= */
+        /* ============================================================
+                   BLACK & GOLD – ANTIQUE TEMPLE STYLE
+                   ============================================================ */
 
         :root {
-            --marble: #F9F6F0;
-            --gold: #C89B3C;
-            --gold-light: #E8C97A;
-            --gold-dark: #A67B2E;
-            --sea-blue: #1B3B5C;
-            --ink: #2C1810;
-            --text-secondary: #5A4A3E;
-            --panel-bg: rgba(255, 252, 245, 0.92);
-            --border-gold: rgba(200, 155, 60, 0.4);
-            --shadow-gold: rgba(200, 155, 60, 0.25);
-            --shadow-dark: rgba(27, 59, 92, 0.15);
+            --bg-primary: #0b0a08;
+            --bg-panel: #141210;
+            --gold: #d4a843;
+            --gold-light: #e8c97a;
+            --gold-dark: #a67b2e;
+            --gold-glow: rgba(212, 168, 67, 0.25);
+            --text-primary: #f0ebe0;
+            --text-secondary: #b8ae9e;
+            --border-gold: rgba(212, 168, 67, 0.35);
+            --shadow-gold: rgba(212, 168, 67, 0.2);
             --font-heading: 'Cinzel Decorative', serif;
             --font-body: 'Cormorant Garamond', serif;
             --transition: 0.3s ease;
@@ -52,44 +52,61 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: var(--font-body);
-            background: var(--marble);
-            color: var(--ink);
-            line-height: 1.7;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4c9b8' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        html {
+            font-size: 18px;
+            /* база для шрифта */
         }
 
-        /* --- Меандр (греческая волна) как разделитель --- */
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            background-image:
+                radial-gradient(ellipse at 20% 50%, rgba(212, 168, 67, 0.03) 0%, transparent 70%),
+                radial-gradient(ellipse at 80% 50%, rgba(212, 168, 67, 0.03) 0%, transparent 70%);
+            min-height: 100vh;
+        }
+
+        /* --- Меандр (декор) --- */
         .meander {
             display: flex;
             justify-content: center;
-            gap: 4px;
+            gap: 6px;
             margin: 2rem 0;
-            opacity: 0.6;
+            opacity: 0.5;
         }
         .meander span {
             display: inline-block;
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             background: repeating-linear-gradient(90deg, var(--gold) 0px, var(--gold) 4px, transparent 4px, transparent 8px);
             border-radius: 2px;
         }
 
+        .meander-svg {
+            display: block;
+            width: 100%;
+            height: 14px;
+            margin: 1.8rem 0;
+            background: repeating-linear-gradient(90deg, var(--gold) 0px, var(--gold) 6px, transparent 6px, transparent 14px);
+            opacity: 0.2;
+        }
+
         /* --- Контейнер --- */
         .container {
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* --- Header (античный фриз) --- */
+        /* --- Header --- */
         header {
-            background: rgba(255, 252, 245, 0.95);
+            background: rgba(11, 10, 8, 0.96);
             backdrop-filter: blur(12px);
             padding: 0.8rem 0;
-            border-bottom: 3px solid var(--gold);
-            box-shadow: 0 4px 20px var(--shadow-dark);
+            border-bottom: 2px solid var(--gold);
+            box-shadow: 0 4px 30px rgba(212, 168, 67, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -97,41 +114,41 @@
 
         .logo {
             font-family: var(--font-heading);
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 900;
             color: var(--gold);
-            letter-spacing: 4px;
+            letter-spacing: 6px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
         .logo i {
-            font-size: 1.8rem;
-            color: var(--gold-dark);
+            font-size: 2rem;
+            color: var(--gold-light);
         }
 
         /* --- Hero --- */
         .hero {
             text-align: center;
             padding: 5rem 0 3rem;
-            background: linear-gradient(180deg, rgba(200,155,60,0.08) 0%, transparent 100%);
-            border-bottom: 2px solid var(--border-gold);
+            border-bottom: 1px solid var(--border-gold);
+            background: linear-gradient(180deg, rgba(212, 168, 67, 0.04) 0%, transparent 100%);
         }
 
         .hero h1 {
             font-family: var(--font-heading);
-            font-size: 4.5rem;
+            font-size: 5rem;
             font-weight: 900;
-            letter-spacing: 6px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            letter-spacing: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 2px 12px var(--shadow-gold);
+            text-shadow: 0 0 60px var(--gold-glow);
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--text-secondary);
             max-width: 700px;
             margin: 1rem auto 2rem;
@@ -140,8 +157,8 @@
 
         /* --- Кнопки (скрижали) --- */
         .btn {
-            padding: 0.9rem 2.2rem;
-            border: none;
+            padding: 0.9rem 2.4rem;
+            border: 2px solid var(--gold);
             border-radius: 0;
             font-family: var(--font-heading);
             font-weight: 700;
@@ -152,44 +169,43 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             font-size: 0.95rem;
             background: transparent;
-            color: var(--ink);
-            border: 2px solid var(--gold);
-            position: relative;
-            background: var(--panel-bg);
+            color: var(--text-primary);
             box-shadow: 0 4px 0 var(--gold-dark);
+            background: rgba(20, 18, 16, 0.8);
         }
 
         .btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--shadow-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px var(--gold-glow);
             background: var(--gold);
-            color: #fff;
-            border-color: var(--gold-dark);
+            color: #0b0a08;
+            border-color: var(--gold-light);
         }
 
         .btn-primary {
             background: var(--gold);
-            color: #fff;
+            color: #0b0a08;
             border-color: var(--gold-dark);
             box-shadow: 0 4px 0 var(--gold-dark);
         }
         .btn-primary:hover:not(:disabled) {
-            background: var(--gold-dark);
+            background: var(--gold-light);
             border-color: var(--gold);
         }
 
         .btn-secondary {
-            background: var(--sea-blue);
+            background: var(--gold-dark);
             color: #fff;
-            border-color: var(--sea-blue);
-            box-shadow: 0 4px 0 #0f2a3f;
+            border-color: var(--gold-dark);
+            box-shadow: 0 4px 0 #7a5f1f;
         }
         .btn-secondary:hover:not(:disabled) {
-            background: #0f2a3f;
-            border-color: var(--sea-blue);
+            background: var(--gold);
+            border-color: var(--gold-light);
+            color: #0b0a08;
         }
 
         .btn-small {
@@ -197,9 +213,37 @@
             font-size: 0.8rem;
         }
         .btn:disabled {
-            opacity: 0.5;
+            opacity: 0.4;
             cursor: not-allowed;
             transform: none !important;
+        }
+
+        /* --- Ссылки (свитки) --- */
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.7rem 1.8rem;
+            background: rgba(20, 18, 16, 0.9);
+            border: 1px solid var(--border-gold);
+            border-radius: 0;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            box-shadow: 0 2px 0 var(--gold-dark);
+        }
+        .link-btn:hover {
+            background: var(--gold);
+            color: #0b0a08;
+            border-color: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--gold-glow);
+        }
+        .link-btn i {
+            font-size: 1.2rem;
         }
 
         /* --- Секции --- */
@@ -210,17 +254,18 @@
 
         .section-title {
             font-family: var(--font-heading);
-            font-size: 2.8rem;
+            font-size: 3rem;
             text-align: center;
             letter-spacing: 4px;
-            color: var(--sea-blue);
+            color: var(--gold);
             margin-bottom: 2.5rem;
             position: relative;
+            text-shadow: 0 0 40px var(--gold-glow);
         }
         .section-title::after {
             content: '';
             display: block;
-            width: 120px;
+            width: 140px;
             height: 3px;
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
             margin: 0.8rem auto 0;
@@ -228,11 +273,11 @@
 
         /* --- Карточки (ионический ордер) --- */
         .card {
-            background: var(--panel-bg);
+            background: var(--bg-panel);
             border-radius: 16px 16px 0 0;
             padding: 2rem;
             border: 1px solid var(--border-gold);
-            box-shadow: 0 8px 24px var(--shadow-dark);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
@@ -243,66 +288,36 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
             opacity: 0.6;
         }
         .card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 12px 36px var(--shadow-gold);
+            box-shadow: 0 12px 40px var(--shadow-gold);
             border-color: var(--gold);
         }
 
-        /* --- Ссылки (как свитки) --- */
-        .link-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 0.7rem 1.6rem;
-            background: var(--panel-bg);
-            border: 1px solid var(--border-gold);
-            border-radius: 0;
-            text-decoration: none;
-            color: var(--ink);
-            font-family: var(--font-body);
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 2px 0 var(--gold-dark);
-        }
-        .link-btn:hover {
-            background: var(--gold);
-            color: #fff;
-            border-color: var(--gold-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px var(--shadow-gold);
-        }
-        .link-btn i {
-            font-size: 1.1rem;
-        }
-
         /* --- Сетки --- */
-        .grid-2,
-        .grid-3,
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
         .grid-4 {
             display: grid;
-            gap: 1.8rem;
-        }
-        .grid-2 { grid-template-columns: repeat(2, 1fr); }
-        .grid-3 { grid-template-columns: repeat(3, 1fr); }
-        .grid-4 { grid-template-columns: repeat(4, 1fr); }
-
-        /* --- Стейкинг секция (храм) --- */
-        .staking-section {
-            background: linear-gradient(135deg, rgba(200,155,60,0.06), rgba(27,59,92,0.04));
-            padding: 3rem 2rem;
-            border-radius: 24px 24px 0 0;
-            border: 1px solid var(--border-gold);
-            margin: 3rem 0;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
         }
 
         /* --- Статистика --- */
         .stat-item {
-            background: var(--panel-bg);
+            background: var(--bg-panel);
             padding: 1.5rem;
             border: 1px solid var(--border-gold);
             text-align: center;
@@ -314,26 +329,27 @@
         }
         .stat-value {
             font-family: var(--font-heading);
-            font-size: 2.8rem;
+            font-size: 3rem;
             color: var(--gold);
         }
 
-        /* --- Контракты (как свитки) --- */
+        /* --- Контракты --- */
         .contract-address {
             font-family: 'Courier New', monospace;
-            background: rgba(27,59,92,0.06);
-            padding: 6px 14px;
+            background: rgba(212, 168, 67, 0.06);
+            padding: 6px 16px;
             border-radius: 4px;
             border: 1px dashed var(--border-gold);
             cursor: pointer;
             transition: var(--transition);
             font-size: 0.85rem;
-            color: var(--sea-blue);
+            color: var(--text-secondary);
             word-break: break-all;
         }
         .contract-address:hover {
-            background: rgba(200,155,60,0.12);
+            background: rgba(212, 168, 67, 0.14);
             border-color: var(--gold);
+            color: var(--text-primary);
         }
 
         /* --- Уведомления --- */
@@ -341,104 +357,229 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            padding: 1rem 1.8rem;
-            background: var(--panel-bg);
+            padding: 1rem 2rem;
+            background: var(--bg-panel);
             border-left: 6px solid var(--gold);
-            box-shadow: 0 8px 30px var(--shadow-dark);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8);
             z-index: 999999;
             font-family: var(--font-body);
             font-weight: 600;
+            font-size: 1.05rem;
             animation: slideIn 0.3s ease;
-            max-width: 400px;
+            max-width: 420px;
             backdrop-filter: blur(8px);
             border-radius: 4px;
+            color: var(--text-primary);
         }
-        .notification-success { border-left-color: #2e7d32; }
-        .notification-error   { border-left-color: #c62828; }
-        .notification-warning { border-left-color: #f57f17; }
-        .notification-info    { border-left-color: #1565c0; }
+        .notification-success {
+            border-left-color: #4caf50;
+        }
+        .notification-error {
+            border-left-color: #e53935;
+        }
+        .notification-warning {
+            border-left-color: #ffa726;
+        }
+        .notification-info {
+            border-left-color: #42a5f5;
+        }
 
         @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to   { transform: translateX(0); opacity: 1; }
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* --- Стейкинг секция --- */
+        .staking-section {
+            background: linear-gradient(135deg, rgba(212, 168, 67, 0.04), rgba(20, 18, 16, 0.9));
+            padding: 3rem 2rem;
+            border-radius: 24px 24px 0 0;
+            border: 1px solid var(--border-gold);
+            margin: 3rem 0;
         }
 
         /* --- Адаптивность --- */
         @media (max-width: 992px) {
-            .grid-3 { grid-template-columns: repeat(2, 1fr); }
-            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         @media (max-width: 768px) {
-            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.8rem; }
-            .section-title { font-size: 2rem; }
-            .staking-section { padding: 1.5rem; }
-            .floating-nav { display: none; } /* упрощаем на мобильных */
+            html {
+                font-size: 16px;
+            }
+            .grid-2,
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 3.2rem;
+                letter-spacing: 4px;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .staking-section {
+                padding: 1.5rem;
+            }
+            header .container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            .logo {
+                font-size: 1.6rem;
+            }
+            .floating-nav {
+                display: none;
+            }
         }
 
-        /* --- Прочие утилиты --- */
-        .text-center { text-align: center; }
-        .mt-2 { margin-top: 2rem; }
-        .mb-2 { margin-bottom: 2rem; }
-        .hidden { display: none !important; }
+        @media (max-width: 480px) {
+            html {
+                font-size: 15px;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+            .link-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
 
-        /* --- Стили для иконок FA (замена эмодзи) --- */
-        .fa-icon { margin-right: 6px; }
+        /* --- Прочее --- */
+        .text-center {
+            text-align: center;
+        }
+        .mt-2 {
+            margin-top: 2rem;
+        }
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+        .hidden {
+            display: none !important;
+        }
 
-        /* Декоративная колонна (псевдо) */
         .column-decoration {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 16px;
             margin: 1.5rem 0;
         }
         .column-decoration i {
             color: var(--gold);
-            font-size: 2rem;
-            opacity: 0.3;
+            font-size: 2.2rem;
+            opacity: 0.25;
         }
 
-        /* Меандр в виде SVG */
-        .meander-svg {
-            display: block;
-            width: 100%;
-            height: 12px;
-            margin: 1.5rem 0;
-            background: repeating-linear-gradient(90deg, var(--gold) 0px, var(--gold) 6px, transparent 6px, transparent 12px);
-            opacity: 0.3;
+        .wallet-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(212, 168, 67, 0.08);
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            border: 1px solid var(--border-gold);
         }
-
-        /* Заголовки с капителью */
-        .capitals {
-            font-family: var(--font-heading);
-            letter-spacing: 3px;
-            text-transform: uppercase;
+        .wallet-info .wallet-address {
+            font-family: monospace;
+            font-size: 0.95rem;
         }
-
-        /* Кнопка «скрижаль» */
-        .tablet-btn {
-            background: var(--panel-bg);
-            border: 2px solid var(--gold);
-            padding: 0.6rem 1.8rem;
-            font-family: var(--font-heading);
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .wallet-info .disconnect-btn {
+            background: transparent;
+            border: 1px solid #e53935;
+            color: #e53935;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
             cursor: pointer;
+            font-size: 0.8rem;
             transition: var(--transition);
-            box-shadow: 0 4px 0 var(--gold-dark);
         }
-        .tablet-btn:hover {
-            background: var(--gold);
+        .wallet-info .disconnect-btn:hover {
+            background: #e53935;
             color: #fff;
-            transform: translateY(-2px);
+        }
+
+        /* Стили для модалки */
+        #walletModal .wallet-option {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-gold);
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: var(--transition);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+        }
+        #walletModal .wallet-option:hover {
+            border-color: var(--gold);
+            background: rgba(212, 168, 67, 0.08);
+            transform: translateX(4px);
+        }
+
+        /* Бейджи безопасности */
+        .security-badge {
+            background: rgba(212, 168, 67, 0.12);
+            padding: 0.2rem 1.2rem;
+            border-radius: 20px;
+            color: var(--gold);
+            font-weight: 600;
+            border: 1px solid var(--border-gold);
+            font-size: 0.9rem;
+        }
+
+        /* Свиток для манифеста */
+        .scroll-panel {
+            background: var(--bg-panel);
+            padding: 2.5rem;
+            border-radius: 16px 16px 0 0;
+            border: 1px solid var(--border-gold);
+            box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.4);
+        }
+        .scroll-panel h3 {
+            font-family: var(--font-heading);
+            color: var(--gold);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+        .scroll-panel p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+        }
+        .scroll-panel strong {
+            color: var(--text-primary);
+        }
+        .scroll-panel .highlight-gold {
+            color: var(--gold);
         }
     </style>
 </head>
+
 <body>
+
     <!-- ===== HEADER ===== -->
     <header>
-        <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+        <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
             <div class="logo">
                 <i class="fas fa-temple"></i>
                 <span>L3G3NDARY</span>
@@ -448,12 +589,12 @@
     </header>
 
     <!-- ===== DOMAIN VERIFICATION ===== -->
-    <div class="domain-verification" style="flex-direction:column; align-items:center; gap:12px; padding:1rem; background:rgba(200,155,60,0.06); border-bottom:1px solid var(--border-gold);">
-        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; justify-content:center;">
-            <i class="fas fa-check-circle" style="color:#2e7d32;"></i>
+    <div class="domain-verification" style="flex-direction:column; align-items:center; gap:12px; padding:0.8rem 1rem; background:rgba(212,168,67,0.04); border-bottom:1px solid var(--border-gold);">
+        <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:center;">
+            <i class="fas fa-check-circle" style="color:#4caf50;"></i>
             <span>Official Website: <strong id="verifiedDomain">l3g3ndary.com</strong></span>
-            <span style="color:var(--text-secondary); font-size:0.9rem;">
-                Security: <span id="securityStatus" class="security-status"><i class="fas fa-shield-halved"></i> Verified</span>
+            <span style="color:var(--text-secondary); font-size:0.95rem;">
+                <i class="fas fa-shield-halved"></i> <span id="securityStatus">Verified</span>
             </span>
         </div>
     </div>
@@ -471,7 +612,7 @@
             <h1>L3G3NDARY</h1>
             <p><i class="fas fa-quote-left" style="color:var(--gold);"></i> Where blockchain meets antiquity <i class="fas fa-quote-right" style="color:var(--gold);"></i></p>
 
-            <div class="links" style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; padding:1.5rem 0;">
+            <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; padding:1.5rem 0;">
                 <a href="https://opensea.io/collection/l3g3nds-317620434" target="_blank" rel="noopener noreferrer" class="link-btn">
                     <i class="fas fa-image"></i> L3G3NDS NFTs
                 </a>
@@ -488,82 +629,300 @@
             <div class="meander"><span></span><span></span><span></span><span></span><span></span></div>
         </section>
 
-        <!-- ============================================ -->
-        <!--  MANIFESTO (сокращён для краткости, но сохранён) -->
-        <!-- ============================================ -->
+        <!-- ============================================================
+        MANIFESTO – ПОЛНАЯ ВЕРСИЯ (восстановлена)
+        ============================================================ -->
         <section class="section" id="manifesto">
-            <div style="max-width:900px; margin:0 auto;">
-                <div style="text-align:center; margin-bottom:2rem;">
-                    <span style="background:rgba(200,155,60,0.12); padding:0.4rem 1.8rem; border-radius:40px; font-family:var(--font-heading); letter-spacing:3px; font-size:0.85rem; color:var(--gold);">
+            <div style="max-width:1000px; margin:0 auto;">
+
+                <div style="text-align:center; margin-bottom:2.5rem;">
+                    <span style="background:rgba(212,168,67,0.12); padding:0.4rem 2rem; border-radius:40px; font-family:var(--font-heading); letter-spacing:4px; font-size:0.85rem; color:var(--gold); border:1px solid var(--border-gold);">
                         <i class="fas fa-scroll"></i> MANIFESTO
                     </span>
-                    <h2 style="font-family:var(--font-heading); font-size:2.8rem; color:var(--sea-blue); margin-top:0.5rem;">
+                    <h2 style="font-family:var(--font-heading); font-size:3.2rem; color:var(--gold); margin-top:0.8rem; text-shadow:0 0 40px var(--gold-glow);">
                         The Blueprint of Legacy
                     </h2>
-                    <p style="color:var(--text-secondary); font-size:1.1rem;">Written on the blockchain. Forever.</p>
+                    <p style="color:var(--text-secondary); font-size:1.2rem; font-style:italic;">Written on the blockchain. Forever.</p>
                 </div>
 
-                <!-- Содержание манифеста (сокращено, но все смыслы сохранены) -->
-                <div style="background:var(--panel-bg); padding:2rem; border-radius:12px 12px 0 0; border:1px solid var(--border-gold);">
-                    <p><i class="fas fa-temple" style="color:var(--gold);"></i> <strong>Introduction:</strong> Trust in crypto is broken. L3G3NDARY is built differently – as legacy.</p>
-                    <div class="meander-svg"></div>
-                    <p><i class="fas fa-lock" style="color:var(--gold);"></i> <strong>Foundations:</strong> All core contracts are <strong>renounced</strong> – no one can change the rules.</p>
-                    <div class="grid-3" style="margin:1rem 0;">
-                        <div class="card"><i class="fas fa-coins"></i> LGND Token – Renounced</div>
-                        <div class="card"><i class="fas fa-ticket"></i> Pass Staking – Renounced</div>
-                        <div class="card"><i class="fas fa-image"></i> L3G3NDS Staking – Renounced</div>
+                <div class="scroll-panel">
+
+                    <!-- 1. INTRODUCTION -->
+                    <h3><i class="fas fa-temple" style="color:var(--gold);"></i> Introduction: The Crisis of Trust</h3>
+                    <div style="background:rgba(229,57,53,0.06); border-left:4px solid #e53935; padding:1rem 1.5rem; border-radius:0 8px 8px 0; margin-bottom:1.2rem;">
+                        <p style="color:#e53935; font-weight:600;">Trust in crypto is broken.</p>
+                        <p style="color:var(--text-secondary);">Endless scam projects. Promises without delivery. Creators who disappear after the sale. Liquidity pools that turn out to be traps.</p>
                     </div>
-                    <p><i class="fas fa-arrows-rotate" style="color:var(--gold);"></i> <strong>The Flywheel:</strong> 100% primary sales → liquidity; 50% royalties → liquidity; stake NFTs → earn LGND.</p>
+                    <p style="color:var(--gold); font-weight:700; font-size:1.15rem;">L3G3NDARY is built differently.</p>
+                    <p style="color:var(--text-secondary);">Not as another NFT drop. Not as a meme token. Not as a quick cash grab.</p>
+                    <p style="color:var(--text-primary); font-size:1.2rem; font-weight:600; margin-top:0.5rem;">As something that will remain after us. As legacy.</p>
                     <div class="meander-svg"></div>
-                    <p><i class="fas fa-palette"></i> <strong>Collections:</strong> Ancient Greek Coin (444), AI Mosaics, L3G3NDARY Pass (555), L3G3NDS (1111), Elite (777).</p>
-                    <p style="margin-top:1rem;"><i class="fas fa-key"></i> <strong>The Gallery:</strong> 292/444 NFTs revealed, 23+ keys found.</p>
-                    <div class="meander-svg"></div>
-                    <p><i class="fas fa-hand-holding-dollar"></i> <strong>Sales Model:</strong> 5% from each resale strengthens liquidity.</p>
-                    <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://l3g3ndary.com" target="_blank" style="color:var(--gold);">l3g3ndary.com</a> – all contracts, proofs, and staking.</p>
-                    <div style="text-align:center; margin-top:1.5rem; padding:1rem; background:rgba(200,155,60,0.06); border-radius:8px;">
-                        <i class="fas fa-quote-left" style="color:var(--gold);"></i>
-                        <em style="font-size:1.2rem;">"Most stories fade like footprints in sand. Empires rise, they crush mountains... and then time comes."</em>
-                        <i class="fas fa-quote-right" style="color:var(--gold);"></i>
+
+                    <!-- 2. FOUNDATIONS -->
+                    <h3><i class="fas fa-lock" style="color:var(--gold);"></i> Foundations: The Architecture of Trust</h3>
+                    <p style="color:var(--text-secondary);">The core contracts in the L3G3NDARY ecosystem are <strong style="color:#4caf50;">renounced</strong>:</p>
+                    <div class="grid-3" style="margin:1rem 0 1.5rem;">
+                        <div style="background:rgba(20,18,16,0.8); padding:0.8rem 1rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; border:1px solid rgba(76,175,80,0.2);">
+                            <span style="color:var(--text-secondary);">LGND Token</span>
+                            <span style="background:rgba(76,175,80,0.15); color:#4caf50; padding:0.2rem 1rem; border-radius:20px; font-size:0.85rem; font-weight:600;">Renounced</span>
+                        </div>
+                        <div style="background:rgba(20,18,16,0.8); padding:0.8rem 1rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; border:1px solid rgba(76,175,80,0.2);">
+                            <span style="color:var(--text-secondary);">L3G3NDARY Pass Staking</span>
+                            <span style="background:rgba(76,175,80,0.15); color:#4caf50; padding:0.2rem 1rem; border-radius:20px; font-size:0.85rem; font-weight:600;">Renounced</span>
+                        </div>
+                        <div style="background:rgba(20,18,16,0.8); padding:0.8rem 1rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; border:1px solid rgba(76,175,80,0.2);">
+                            <span style="color:var(--text-secondary);">L3G3NDS Staking</span>
+                            <span style="background:rgba(76,175,80,0.15); color:#4caf50; padding:0.2rem 1rem; border-radius:20px; font-size:0.85rem; font-weight:600;">Renounced</span>
+                        </div>
                     </div>
-                </div>
+                    <div style="background:rgba(76,175,80,0.04); border:1px solid rgba(76,175,80,0.12); border-radius:12px; padding:1rem 1.5rem; margin-bottom:1.2rem;">
+                        <p style="color:var(--text-secondary);">This means <strong style="color:var(--text-primary);">no one can change the rules</strong>. The contracts work as written — <strong style="color:#4caf50;">forever</strong>. No ability to disable staking, no hidden "take everything" buttons, no creator control.</p>
+                    </div>
+                    <div class="grid-3" style="margin-bottom:1rem;">
+                        <div style="background:rgba(20,18,16,0.6); padding:1rem; border-radius:10px; text-align:center; border:1px solid rgba(255,255,255,0.05);">
+                            <div style="color:var(--gold); font-size:2.2rem; font-weight:700;">80%</div>
+                            <div style="color:var(--text-secondary); font-size:0.9rem;">locked, burned, or in staking</div>
+                        </div>
+                        <div style="background:rgba(20,18,16,0.6); padding:1rem; border-radius:10px; text-align:center; border:1px solid rgba(255,255,255,0.05);">
+                            <div style="color:var(--gold); font-size:2.2rem; font-weight:700;">20%</div>
+                            <div style="color:var(--text-secondary); font-size:0.9rem;">in circulation</div>
+                        </div>
+                        <div style="background:rgba(20,18,16,0.6); padding:1rem; border-radius:10px; text-align:center; border:1px solid rgba(255,255,255,0.05);">
+                            <div style="color:#4caf50; font-size:2.2rem; font-weight:700;"><i class="fas fa-lock"></i></div>
+                            <div style="color:var(--text-secondary); font-size:0.9rem;">Liquidity locked forever</div>
+                        </div>
+                    </div>
+                    <div style="background:rgba(212,168,67,0.04); border:1px solid var(--border-gold); border-radius:12px; padding:0.8rem 1.5rem;">
+                        <p style="color:var(--text-secondary);"><i class="fas fa-search" style="color:var(--gold);"></i> All contracts can be verified on the website and on-chain. Addresses, statuses, transactions — <strong style="color:var(--text-primary);">everything is public</strong>.</p>
+                    </div>
+                    <div class="meander-svg"></div>
+
+                    <!-- 3. THE FLYWHEEL -->
+                    <h3><i class="fas fa-arrows-rotate" style="color:var(--gold);"></i> The Flywheel: How It Works</h3>
+                    <p style="color:var(--text-secondary); margin-bottom:1rem;">The L3G3NDARY ecosystem is built around a simple formula:</p>
+                    <div class="grid-2" style="margin-bottom:1.2rem;">
+                        <div style="background:rgba(20,18,16,0.6); padding:0.8rem 1rem; border-radius:8px; display:flex; align-items:center; gap:12px; border-left:3px solid var(--gold);">
+                            <span style="color:var(--gold); font-weight:700;">100%</span>
+                            <span style="color:var(--text-secondary);">NFTs sold (primary) → into LGND liquidity</span>
+                        </div>
+                        <div style="background:rgba(20,18,16,0.6); padding:0.8rem 1rem; border-radius:8px; display:flex; align-items:center; gap:12px; border-left:3px solid #4caf50;">
+                            <span style="color:#4caf50; font-weight:700;">50%</span>
+                            <span style="color:var(--text-secondary);">Royalties (secondary) → into LGND liquidity</span>
+                        </div>
+                        <div style="background:rgba(20,18,16,0.6); padding:0.8rem 1rem; border-radius:8px; display:flex; align-items:center; gap:12px; border-left:3px solid #ffa726;">
+                            <span style="color:#ffa726; font-weight:700;"><i class="fas fa-chart-line"></i></span>
+                            <span style="color:var(--text-secondary);">You buy LGND → You increase liquidity</span>
+                        </div>
+                        <div style="background:rgba(20,18,16,0.6); padding:0.8rem 1rem; border-radius:8px; display:flex; align-items:center; gap:12px; border-left:3px solid var(--gold);">
+                            <span style="color:var(--gold); font-weight:700;"><i class="fas fa-bolt"></i></span>
+                            <span style="color:var(--text-secondary);">You stake NFTs → You earn LGND</span>
+                        </div>
+                    </div>
+                    <div style="background:linear-gradient(135deg, rgba(212,168,67,0.06), rgba(20,18,16,0.8)); border:1px solid var(--border-gold); border-radius:16px; padding:1.2rem 2rem; text-align:center;">
+                        <p style="color:var(--text-secondary); font-size:1.1rem; font-weight:500;">This is a <strong style="color:var(--text-primary);">closed loop</strong>:</p>
+                        <p style="color:var(--text-secondary); font-style:italic;">Buy NFT → funds go to liquidity → token grows → stake NFT → earn token → ecosystem strengthens</p>
+                    </div>
+                    <div class="meander-svg"></div>
+
+                    <!-- 4. COLLECTIONS -->
+                    <h3><i class="fas fa-palette" style="color:var(--gold);"></i> Collections: Art and Utility</h3>
+                    <p style="color:var(--text-secondary); margin-bottom:1rem;">Each collection in the L3G3NDARY ecosystem has its own role.</p>
+                    <div class="grid-2" style="margin-bottom:1rem;">
+
+                        <div style="background:rgba(20,18,16,0.6); border-radius:16px; padding:1.2rem; border:1px solid rgba(255,255,255,0.04);">
+                            <div style="display:flex; align-items:center; gap:10px; margin-bottom:0.5rem;">
+                                <span style="font-size:2rem;"><i class="fas fa-coins" style="color:var(--gold);"></i></span>
+                                <h4 style="color:var(--gold); font-family:var(--font-heading);">Ancient Greek Coin</h4>
+                            </div>
+                            <p style="color:var(--text-secondary); font-size:0.95rem;">The heart of the project. <strong style="color:var(--text-primary);">444 NFTs</strong>, each with a unique story. Each character has an individual legend, each legend holds a key-word that is part of a single message.</p>
+                            <div style="background:rgba(212,168,67,0.06); padding:0.5rem 1rem; border-radius:8px; text-align:center; border:1px solid var(--border-gold); margin-top:0.5rem;">
+                                <span style="color:#ffa726; font-weight:600;">444 stories → 444 keys → 1 message</span>
+                            </div>
+                        </div>
+
+                        <div style="background:rgba(20,18,16,0.6); border-radius:16px; padding:1.2rem; border:1px solid rgba(255,255,255,0.04);">
+                            <div style="display:flex; align-items:center; gap:10px; margin-bottom:0.5rem;">
+                                <span style="font-size:2rem;"><i class="fas fa-robot" style="color:#4caf50;"></i></span>
+                                <h4 style="color:#4caf50; font-family:var(--font-heading);">AI Mosaics L3g3nds</h4>
+                            </div>
+                            <p style="color:var(--text-secondary); font-size:0.95rem;">A collection of pure art, where utility does not overshadow meaning. A conscious decision: to leave space for those who value aesthetics and history, not just passive income.</p>
+                            <div style="background:rgba(76,175,80,0.04); padding:0.5rem 1rem; border-radius:8px; text-align:center; border:1px solid rgba(76,175,80,0.08); margin-top:0.5rem;">
+                                <span style="color:var(--text-secondary); font-size:0.9rem;">Does not participate in staking — remains part of the ecosystem</span>
+                            </div>
+                        </div>
+
+                        <div style="background:rgba(20,18,16,0.6); border-radius:16px; padding:1.2rem; border:1px solid rgba(255,255,255,0.04);">
+                            <div style="display:flex; align-items:center; gap:10px; margin-bottom:0.5rem;">
+                                <span style="font-size:2rem;"><i class="fas fa-ticket" style="color:#ffa726;"></i></span>
+                                <h4 style="color:#ffa726; font-family:var(--font-heading);">L3G3NDARY Pass</h4>
+                            </div>
+                            <p style="color:var(--text-secondary); font-size:0.95rem;"><strong style="color:var(--text-primary);">555 NFT tickets</strong> into the ecosystem. Provide access to a private Discord channel, the right to free mint of each new collection, and airdrops of LGND tokens.</p>
+                            <div style="background:rgba(255,167,38,0.06); padding:0.5rem 1rem; border-radius:8px; text-align:center; border:1px solid rgba(255,167,38,0.12); margin-top:0.5rem;">
+                                <span style="color:#ffa726; font-weight:600;"><i class="fas fa-bolt"></i> Staking: 2,500 LGND per day</span>
+                            </div>
+                        </div>
+
+                        <div style="background:rgba(20,18,16,0.6); border-radius:16px; padding:1.2rem; border:1px solid rgba(255,255,255,0.04);">
+                            <div style="display:flex; align-items:center; gap:10px; margin-bottom:0.5rem;">
+                                <span style="font-size:2rem;"><i class="fas fa-image" style="color:var(--gold);"></i></span>
+                                <h4 style="color:var(--gold); font-family:var(--font-heading);">L3G3NDS</h4>
+                            </div>
+                            <p style="color:var(--text-secondary); font-size:0.95rem;"><strong style="color:var(--text-primary);">1,111 NFTs</strong>. Staked → generate stable income in LGND.</p>
+                            <div style="background:rgba(212,168,67,0.06); padding:0.5rem 1rem; border-radius:8px; text-align:center; border:1px solid var(--border-gold); margin-top:0.5rem;">
+                                <span style="color:var(--gold); font-weight:600;"><i class="fas fa-bolt"></i> Staking: 1,000 LGND per day</span>
+                            </div>
+                        </div>
+
+                        <div style="background:rgba(20,18,16,0.6); border-radius:16px; padding:1.2rem; border:1px solid rgba(255,255,255,0.04); grid-column:1 / -1;">
+                            <div style="display:flex; align-items:center; gap:10px; margin-bottom:0.5rem;">
+                                <span style="font-size:2rem;"><i class="fas fa-crown" style="color:#ffd700;"></i></span>
+                                <h4 style="color:#ffd700; font-family:var(--font-heading);">L3G3NDARY Elite</h4>
+                            </div>
+                            <p style="color:var(--text-secondary); font-size:0.95rem;"><strong style="color:var(--text-primary);">777 unique NFTs</strong>, created in different qualities and styles using AI.</p>
+                            <div style="background:rgba(255,215,0,0.06); padding:0.5rem 1rem; border-radius:8px; text-align:center; border:1px solid rgba(255,215,0,0.12); margin-top:0.5rem;">
+                                <span style="color:#ffd700; font-weight:600;"><i class="fas fa-bolt"></i> Staking: 777 LGND per day</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meander-svg"></div>
+
+                    <!-- 5. THE GALLERY -->
+                    <h3><i class="fas fa-key" style="color:var(--gold);"></i> The Gallery: A Museum on the Blockchain</h3>
+                    <p style="color:var(--text-secondary);">Ancient Greek Coin Gallery — a public museum where NFTs with stories are collected.</p>
+                    <div class="grid-3" style="margin:1rem 0 1.2rem;">
+                        <div style="background:rgba(20,18,16,0.6); padding:1rem; border-radius:12px; text-align:center; border:1px solid var(--border-gold);">
+                            <div style="color:var(--gold); font-size:2.6rem; font-weight:700;">292</div>
+                            <div style="color:var(--text-secondary); font-size:0.9rem;">out of 444 NFTs in the gallery</div>
+                        </div>
+                        <div style="background:rgba(20,18,16,0.6); padding:1rem; border-radius:12px; text-align:center; border:1px solid var(--border-gold);">
+                            <div style="color:#ffa726; font-size:2.6rem; font-weight:700;">23+</div>
+                            <div style="color:var(--text-secondary); font-size:0.9rem;">keys found</div>
+                        </div>
+                        <div style="background:rgba(20,18,16,0.6); padding:1rem; border-radius:12px; text-align:center; border:1px solid var(--border-gold);">
+                            <div style="color:#4caf50; font-size:2.6rem; font-weight:700;"><i class="fas fa-scroll"></i></div>
+                            <div style="color:var(--text-secondary); font-size:0.9rem;">The message has begun to reveal itself</div>
+                        </div>
+                    </div>
+                    <div style="background:rgba(212,168,67,0.04); border:1px solid var(--border-gold); border-radius:12px; padding:0.8rem 1.5rem; text-align:center;">
+                        <p style="color:var(--text-secondary); font-weight:500;">This is not just a collection. This is <strong style="color:var(--text-primary);">architecture of meaning</strong>.</p>
+                    </div>
+                    <div class="meander-svg"></div>
+
+                    <!-- 6. SALES MODEL -->
+                    <h3><i class="fas fa-hand-holding-dollar" style="color:var(--gold);"></i> Sales Model: Transparency</h3>
+                    <p style="color:var(--text-secondary);">Everything sold from the project wallet and gallery goes toward ecosystem development.</p>
+                    <div style="background:rgba(255,167,38,0.04); border:1px solid rgba(255,167,38,0.12); border-radius:12px; padding:0.8rem 1.5rem; margin:0.8rem 0;">
+                        <p style="color:#ffa726; font-weight:600;"><i class="fas fa-percent"></i> 5% from each resale strengthens the token's liquidity.</p>
+                    </div>
+                    <div class="grid-3" style="margin-bottom:0.8rem;">
+                        <div style="background:rgba(20,18,16,0.4); padding:0.6rem; border-radius:8px; text-align:center; border-left:3px solid #4caf50;">
+                            <span style="color:#4caf50; font-weight:600;"><i class="fas fa-list-check"></i> Explained in advance</span>
+                        </div>
+                        <div style="background:rgba(20,18,16,0.4); padding:0.6rem; border-radius:8px; text-align:center; border-left:3px solid #42a5f5;">
+                            <span style="color:#42a5f5; font-weight:600;"><i class="fas fa-search"></i> Transactions are public</span>
+                        </div>
+                        <div style="background:rgba(20,18,16,0.4); padding:0.6rem; border-radius:8px; text-align:center; border-left:3px solid var(--gold);">
+                            <span style="color:var(--gold); font-weight:600;"><i class="fas fa-bullseye"></i> The purpose is clear</span>
+                        </div>
+                    </div>
+                    <div style="background:rgba(76,175,80,0.04); border:1px solid rgba(76,175,80,0.12); border-radius:12px; padding:0.6rem 1.5rem; text-align:center;">
+                        <p style="color:#4caf50; font-weight:600;">This is not an exit. This is building.</p>
+                    </div>
+                    <div class="meander-svg"></div>
+
+                    <!-- 7. WEBSITE -->
+                    <h3><i class="fas fa-globe" style="color:var(--gold);"></i> Website and Control</h3>
+                    <p style="color:var(--text-secondary);">All information about the project, contracts, staking, and collections is on the website:</p>
+                    <div style="background:rgba(212,168,67,0.06); border:1px solid var(--border-gold); border-radius:12px; padding:0.8rem 1.5rem; text-align:center; margin:0.8rem 0;">
+                        <a href="https://l3g3ndary.com" target="_blank" style="color:var(--gold); font-size:1.4rem; font-weight:700; text-decoration:none; letter-spacing:2px;">
+                            <i class="fas fa-link"></i> https://l3g3ndary.com
+                        </a>
+                    </div>
+                    <div class="grid-4" style="margin-bottom:0.8rem;">
+                        <div style="background:rgba(20,18,16,0.4); padding:0.6rem; border-radius:8px; text-align:center; font-size:0.95rem; color:var(--text-secondary);">
+                            <i class="fas fa-list-ul" style="color:var(--gold);"></i> Addresses of all contracts
+                        </div>
+                        <div style="background:rgba(20,18,16,0.4); padding:0.6rem; border-radius:8px; text-align:center; font-size:0.95rem; color:var(--text-secondary);">
+                            <i class="fas fa-check-circle" style="color:#4caf50;"></i> Proof of renouncement
+                        </div>
+                        <div style="background:rgba(20,18,16,0.4); padding:0.6rem; border-radius:8px; text-align:center; font-size:0.95rem; color:var(--text-secondary);">
+                            <i class="fas fa-droplet" style="color:#ffa726;"></i> Liquidity status
+                        </div>
+                        <div style="background:rgba(20,18,16,0.4); padding:0.6rem; border-radius:8px; text-align:center; font-size:0.95rem; color:var(--text-secondary);">
+                            <i class="fas fa-arrow-up-right-from-square" style="color:#42a5f5;"></i> Direct links to Etherscan
+                        </div>
+                    </div>
+                    <div class="meander-svg"></div>
+
+                    <!-- 8. CONCLUSION -->
+                    <h3><i class="fas fa-temple" style="color:var(--gold);"></i> Conclusion: Legacy</h3>
+                    <div style="max-width:700px; margin:0 auto;">
+                        <p style="color:var(--text-secondary);">Most projects say "community first" and chase hype.</p>
+                        <p style="color:var(--text-primary); font-weight:600; font-size:1.15rem;">L3G3NDARY is built differently.</p>
+                        <div class="grid-2" style="margin:0.8rem auto; max-width:500px;">
+                            <div style="background:rgba(20,18,16,0.6); padding:0.6rem; border-radius:8px; color:#4caf50; font-size:0.95rem; text-align:center;">✅ Every NFT sold → liquidity grows</div>
+                            <div style="background:rgba(20,18,16,0.6); padding:0.6rem; border-radius:8px; color:#4caf50; font-size:0.95rem; text-align:center;">✅ Every stake → ecosystem strengthens</div>
+                            <div style="background:rgba(20,18,16,0.6); padding:0.6rem; border-radius:8px; color:#4caf50; font-size:0.95rem; text-align:center;">✅ Every contract → renounced forever</div>
+                            <div style="background:rgba(20,18,16,0.6); padding:0.6rem; border-radius:8px; color:#4caf50; font-size:0.95rem; text-align:center;">✅ Every promise → fulfilled</div>
+                        </div>
+                        <p style="color:var(--text-secondary); font-style:italic;">No empty promises. Only completed steps and full transparency.</p>
+                        <p style="color:var(--text-secondary); font-size:1.1rem; margin:0.8rem 0;">
+                            444 stories written on the blockchain — <strong style="color:var(--text-primary);">not for today</strong>. <strong style="color:#ffa726;">For what will remain after us.</strong>
+                        </p>
+                        <div style="background:rgba(20,18,16,0.8); border-radius:16px; padding:1.2rem 2rem; border:1px solid var(--border-gold); margin:1rem 0;">
+                            <p style="color:var(--text-primary); font-size:1.2rem; font-style:italic; text-align:center;">
+                                "Most stories fade like footprints in sand. Empires rise, they crush mountains, they build walls that touch the sky. And then time comes..."
+                            </p>
+                        </div>
+                        <div style="text-align:center; margin-top:1.2rem;">
+                            <span style="display:inline-block; background:linear-gradient(135deg, rgba(212,168,67,0.12), rgba(20,18,16,0.8)); padding:0.6rem 2.5rem; border-radius:50px; border:2px solid var(--gold);">
+                                <span style="color:var(--text-primary); font-size:1.2rem; font-weight:700; letter-spacing:6px; font-family:var(--font-heading);">L3G3NDARY</span>
+                                <span style="color:var(--gold); margin-left:0.8rem;"><i class="fas fa-temple"></i></span>
+                            </span>
+                        </div>
+                    </div>
+
+                </div> <!-- /scroll-panel -->
             </div>
         </section>
 
-        <!-- ===== SECURITY & TRANSPARENCY ===== -->
+        <!-- ============================================================
+        SECURITY & TRANSPARENCY
+        ============================================================ -->
         <section class="section" id="security-transparency">
             <h2 class="section-title"><i class="fas fa-shield-halved"></i> Security & Transparency</h2>
             <div class="grid-2">
                 <div class="card">
                     <h3 style="font-family:var(--font-heading); color:var(--gold);"><i class="fas fa-check-circle"></i> Renounced Contracts</h3>
                     <div style="margin-top:1rem;">
-                        <div class="contract-item" style="display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid var(--border-gold);">
+                        <div style="display:flex; justify-content:space-between; padding:0.6rem 0; border-bottom:1px solid var(--border-gold);">
                             <span>LGND Token</span>
-                            <span class="security-badge" style="background:rgba(46,125,50,0.12); padding:0.2rem 1rem; border-radius:20px; color:#2e7d32;"><i class="fas fa-check"></i> Renounced</span>
+                            <span class="security-badge"><i class="fas fa-check"></i> Renounced</span>
                         </div>
-                        <div class="contract-item" style="display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid var(--border-gold);">
+                        <div style="display:flex; justify-content:space-between; padding:0.6rem 0; border-bottom:1px solid var(--border-gold);">
                             <span>Pass Staking</span>
-                            <span class="security-badge" style="background:rgba(46,125,50,0.12); padding:0.2rem 1rem; border-radius:20px; color:#2e7d32;"><i class="fas fa-check"></i> Renounced</span>
+                            <span class="security-badge"><i class="fas fa-check"></i> Renounced</span>
                         </div>
-                        <div class="contract-item" style="display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid var(--border-gold);">
+                        <div style="display:flex; justify-content:space-between; padding:0.6rem 0; border-bottom:1px solid var(--border-gold);">
                             <span>L3G3NDS Staking</span>
-                            <span class="security-badge" style="background:rgba(46,125,50,0.12); padding:0.2rem 1rem; border-radius:20px; color:#2e7d32;"><i class="fas fa-check"></i> Renounced</span>
+                            <span class="security-badge"><i class="fas fa-check"></i> Renounced</span>
                         </div>
-                        <div class="contract-item" style="display:flex; justify-content:space-between; padding:0.5rem 0;">
+                        <div style="display:flex; justify-content:space-between; padding:0.6rem 0;">
                             <span>Liquidity Pool</span>
-                            <span class="security-badge" style="background:rgba(245,127,23,0.12); padding:0.2rem 1rem; border-radius:20px; color:#f57f17;"><i class="fas fa-lock"></i> LOCKED/BURNED</span>
+                            <span class="security-badge" style="border-color:#ffa726; color:#ffa726;"><i class="fas fa-lock"></i> LOCKED/BURNED</span>
                         </div>
                     </div>
                 </div>
                 <div class="card">
                     <h3 style="font-family:var(--font-heading); color:var(--gold);"><i class="fas fa-hand-holding-usd"></i> Royalty Distribution</h3>
                     <div style="margin-top:1rem;">
-                        <div style="display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid var(--border-gold);">
+                        <div style="display:flex; justify-content:space-between; padding:0.6rem 0; border-bottom:1px solid var(--border-gold);">
                             <span>100% NFT Sales</span>
-                            <span style="color:#2e7d32; font-weight:600;"><i class="fas fa-arrow-right"></i> To LGND Liquidity</span>
+                            <span style="color:#4caf50; font-weight:600;"><i class="fas fa-arrow-right"></i> To LGND Liquidity</span>
                         </div>
-                        <div style="display:flex; justify-content:space-between; padding:0.5rem 0;">
+                        <div style="display:flex; justify-content:space-between; padding:0.6rem 0;">
                             <span>50% Royalties</span>
-                            <span style="color:#2e7d32; font-weight:600;"><i class="fas fa-arrow-right"></i> To LGND Liquidity</span>
+                            <span style="color:#4caf50; font-weight:600;"><i class="fas fa-arrow-right"></i> To LGND Liquidity</span>
                         </div>
                         <p style="color:var(--text-secondary); font-size:0.95rem; margin-top:1rem;">100% of NFT sales and 50% of royalties are added to LGND liquidity.</p>
                     </div>
@@ -571,7 +930,9 @@
             </div>
         </section>
 
-        <!-- ===== TOKENOMICS ===== -->
+        <!-- ============================================================
+        TOKENOMICS
+        ============================================================ -->
         <section class="section" id="tokenomics">
             <h2 class="section-title"><i class="fas fa-chart-pie"></i> LGND Tokenomics</h2>
             <p style="text-align:center; font-size:1.2rem; color:var(--text-secondary);">Total Supply: 1,000,000,000 LGND (1 Billion)</p>
@@ -579,39 +940,39 @@
                 <div class="card">
                     <h3 style="font-family:var(--font-heading); color:var(--gold);"><i class="fas fa-coins"></i> Token Allocation</h3>
                     <div style="margin-top:1rem;">
-                        <div class="tokenomics-item" style="display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid var(--border-gold);">
+                        <div style="display:flex; justify-content:space-between; padding:0.6rem 0; border-bottom:1px solid var(--border-gold);">
                             <span>Pass Staking (Locked)</span>
-                            <span style="background:var(--gold); color:#fff; padding:0.2rem 1rem; border-radius:20px;">50% (500M)</span>
+                            <span style="background:var(--gold); color:#0b0a08; padding:0.2rem 1rem; border-radius:20px; font-weight:600;">50% (500M)</span>
                         </div>
-                        <div class="tokenomics-item" style="display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid var(--border-gold);">
+                        <div style="display:flex; justify-content:space-between; padding:0.6rem 0; border-bottom:1px solid var(--border-gold);">
                             <span>L3G3NDS Staking (Locked)</span>
-                            <span style="background:var(--gold); color:#fff; padding:0.2rem 1rem; border-radius:20px;">15% (150M)</span>
+                            <span style="background:var(--gold); color:#0b0a08; padding:0.2rem 1rem; border-radius:20px; font-weight:600;">15% (150M)</span>
                         </div>
-                        <div class="tokenomics-item" style="display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid var(--border-gold);">
+                        <div style="display:flex; justify-content:space-between; padding:0.6rem 0; border-bottom:1px solid var(--border-gold);">
                             <span>Locked for Liquidity Additions</span>
-                            <span style="background:var(--gold); color:#fff; padding:0.2rem 1rem; border-radius:20px;">15% (150M)</span>
+                            <span style="background:var(--gold); color:#0b0a08; padding:0.2rem 1rem; border-radius:20px; font-weight:600;">15% (150M)</span>
                         </div>
-                        <div class="tokenomics-item" style="display:flex; justify-content:space-between; padding:0.5rem 0; border-top:2px dashed var(--gold); margin-top:0.5rem; padding-top:0.8rem;">
-                            <span style="font-weight:700; color:var(--sea-blue);"><i class="fas fa-sync-alt"></i> Circulating Supply (20%)</span>
-                            <span style="background:var(--sea-blue); color:#fff; padding:0.2rem 1rem; border-radius:20px; font-weight:700;">200M</span>
+                        <div style="display:flex; justify-content:space-between; padding:0.8rem 0; border-top:2px dashed var(--gold); margin-top:0.5rem;">
+                            <span style="font-weight:700; color:var(--gold);"><i class="fas fa-sync-alt"></i> Circulating Supply (20%)</span>
+                            <span style="background:var(--gold-dark); color:#fff; padding:0.2rem 1rem; border-radius:20px; font-weight:700;">200M</span>
                         </div>
                         <div style="margin-left:1.5rem; margin-top:0.5rem;">
                             <div style="display:flex; justify-content:space-between; padding:0.3rem 0; border-bottom:1px solid var(--border-gold);">
                                 <span style="font-size:0.9rem;">Liquidity Pool</span>
-                                <span style="background:rgba(200,155,60,0.2); padding:0.1rem 0.8rem; border-radius:20px; font-size:0.85rem;">10% (100M)</span>
+                                <span style="background:rgba(212,168,67,0.12); padding:0.1rem 0.8rem; border-radius:20px; font-size:0.85rem;">10% (100M)</span>
                             </div>
                             <div style="display:flex; justify-content:space-between; padding:0.3rem 0; border-bottom:1px solid var(--border-gold);">
                                 <span style="font-size:0.9rem;">Project Wallet</span>
-                                <span style="background:rgba(200,155,60,0.2); padding:0.1rem 0.8rem; border-radius:20px; font-size:0.85rem;">1% (5M)</span>
+                                <span style="background:rgba(212,168,67,0.12); padding:0.1rem 0.8rem; border-radius:20px; font-size:0.85rem;">1% (5M)</span>
                             </div>
                             <div style="display:flex; justify-content:space-between; padding:0.3rem 0;">
                                 <span style="font-size:0.9rem;">Holders</span>
-                                <span style="background:rgba(200,155,60,0.2); padding:0.1rem 0.8rem; border-radius:20px; font-size:0.85rem;">9% (95M)</span>
+                                <span style="background:rgba(212,168,67,0.12); padding:0.1rem 0.8rem; border-radius:20px; font-size:0.85rem;">9% (95M)</span>
                             </div>
                         </div>
                     </div>
                     <p style="margin-top:1rem; font-size:0.9rem; color:var(--text-secondary); text-align:center; border-top:1px solid var(--border-gold); padding-top:0.8rem;">
-                        <i class="fas fa-check-circle" style="color:#2e7d32;"></i> 80% locked for staking & liquidity &nbsp;|&nbsp; <i class="fas fa-unlock-alt" style="color:#f57f17;"></i> Only 20% circulating
+                        <i class="fas fa-check-circle" style="color:#4caf50;"></i> 80% locked for staking & liquidity &nbsp;|&nbsp; <i class="fas fa-unlock-alt" style="color:#ffa726;"></i> Only 20% circulating
                     </p>
                 </div>
                 <div class="card">
@@ -619,35 +980,37 @@
                     <div style="margin-top:1.5rem;">
                         <div style="margin-bottom:0.8rem;">
                             <span>Staking &amp; Liquidity (80%)</span>
-                            <div style="width:100%; height:12px; background:rgba(200,155,60,0.2); margin-top:4px; border-radius:0;">
+                            <div style="width:100%; height:14px; background:rgba(212,168,67,0.12); margin-top:4px; border-radius:0;">
                                 <div style="width:80%; height:100%; background:var(--gold); border-radius:0;"></div>
                             </div>
                         </div>
                         <div style="margin-bottom:0.8rem;">
                             <span>Circulating (20%)</span>
-                            <div style="width:100%; height:12px; background:rgba(27,59,92,0.12); margin-top:4px; border-radius:0;">
-                                <div style="width:20%; height:100%; background:var(--sea-blue); border-radius:0;"></div>
+                            <div style="width:100%; height:14px; background:rgba(255,255,255,0.04); margin-top:4px; border-radius:0;">
+                                <div style="width:20%; height:100%; background:var(--gold-dark); border-radius:0;"></div>
                             </div>
                         </div>
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:1.5rem;">
-                            <div style="background:rgba(200,155,60,0.06); padding:0.8rem; text-align:center; border:1px solid var(--border-gold);">
-                                <div style="font-size:1.8rem; font-weight:700; color:var(--gold);">80%</div>
+                        <div class="grid-2" style="margin-top:1.5rem;">
+                            <div style="background:rgba(212,168,67,0.06); padding:0.8rem; text-align:center; border:1px solid var(--border-gold);">
+                                <div style="font-size:2rem; font-weight:700; color:var(--gold);">80%</div>
                                 <div style="font-size:0.85rem; color:var(--text-secondary);">locked, burned, or in staking</div>
                             </div>
-                            <div style="background:rgba(27,59,92,0.06); padding:0.8rem; text-align:center; border:1px solid var(--border-gold);">
-                                <div style="font-size:1.8rem; font-weight:700; color:var(--sea-blue);">20%</div>
+                            <div style="background:rgba(20,18,16,0.8); padding:0.8rem; text-align:center; border:1px solid var(--border-gold);">
+                                <div style="font-size:2rem; font-weight:700; color:var(--gold-dark);">20%</div>
                                 <div style="font-size:0.85rem; color:var(--text-secondary);">in circulation</div>
                             </div>
                         </div>
-                        <div style="margin-top:1rem; text-align:center; background:rgba(46,125,50,0.06); padding:0.5rem; border:1px solid rgba(46,125,50,0.2);">
-                            <i class="fas fa-lock" style="color:#2e7d32;"></i> Liquidity locked forever
+                        <div style="margin-top:1rem; text-align:center; background:rgba(76,175,80,0.04); padding:0.5rem; border:1px solid rgba(76,175,80,0.12);">
+                            <i class="fas fa-lock" style="color:#4caf50;"></i> Liquidity locked forever
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== PROOF OF RENOUNCEMENT ===== -->
+        <!-- ============================================================
+        PROOF OF RENOUNCEMENT
+        ============================================================ -->
         <section class="section" id="proof-section">
             <h2 class="section-title"><i class="fas fa-search"></i> Proof of Renouncement</h2>
             <p style="text-align:center; color:var(--text-secondary); font-size:1.1rem;">Verify on Etherscan – ownership permanently renounced</p>
@@ -684,13 +1047,15 @@
                 </div>
             </div>
             <div style="text-align:center; margin-top:2rem;">
-                <div style="display:inline-block; background:rgba(46,125,50,0.08); padding:0.8rem 2rem; border:1px solid rgba(46,125,50,0.3); border-radius:40px;">
-                    <i class="fas fa-lock" style="color:#2e7d32;"></i> All 3 contracts are permanently renounced – no one can ever modify them
+                <div style="display:inline-block; background:rgba(76,175,80,0.06); padding:0.8rem 2rem; border:1px solid rgba(76,175,80,0.2); border-radius:40px;">
+                    <i class="fas fa-lock" style="color:#4caf50;"></i> All 3 contracts are permanently renounced – no one can ever modify them
                 </div>
             </div>
         </section>
 
-        <!-- ===== CONTRACT ADDRESSES ===== -->
+        <!-- ============================================================
+        CONTRACT ADDRESSES
+        ============================================================ -->
         <section class="section" id="contract-addresses">
             <h2 class="section-title"><i class="fas fa-list-ul"></i> Smart Contract Addresses</h2>
             <div style="display:flex; flex-direction:column; gap:0.8rem; margin-top:1.5rem;">
@@ -756,83 +1121,80 @@
             </div>
         </section>
 
-        <!-- ===== STAKING SECTION (храм) ===== -->
+        <!-- ============================================================
+        STAKING SECTION
+        ============================================================ -->
         <section class="staking-section" id="staking">
-            <h2 class="section-title" style="color:var(--sea-blue);"><i class="fas fa-arrow-trend-up"></i> NFT Staking Platform</h2>
+            <h2 class="section-title" style="color:var(--gold);"><i class="fas fa-arrow-trend-up"></i> NFT Staking Platform</h2>
 
-            <!-- Статистика -->
             <div class="grid-3" style="margin-bottom:2rem;">
                 <div class="stat-item">
                     <div class="stat-value" id="totalStaked">0</div>
                     <div class="stat-label">Total NFTs Staked</div>
-                    <div style="font-size:0.85rem; color:var(--gold); margin-top:0.3rem;">
+                    <div style="font-size:0.9rem; color:var(--gold); margin-top:0.3rem;">
                         <span id="legendStakedCount">0</span> L3G3NDS · <span id="passStakedCount">0</span> PASS
                     </div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value" id="dailyRewards">0</div>
                     <div class="stat-label">L3G3NDS Daily Pool</div>
-                    <div style="font-size:0.85rem; color:var(--text-secondary);" id="legendPoolInfo">Loading...</div>
+                    <div style="font-size:0.9rem; color:var(--text-secondary);" id="legendPoolInfo">Loading...</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value" id="passRewards">0</div>
                     <div class="stat-label">Pass Daily Pool</div>
-                    <div style="font-size:0.85rem; color:var(--text-secondary);" id="passPoolInfo">Loading...</div>
+                    <div style="font-size:0.9rem; color:var(--text-secondary);" id="passPoolInfo">Loading...</div>
                 </div>
             </div>
 
-            <!-- Остатки -->
             <div class="grid-2" style="margin-bottom:2rem;">
-                <div style="background:var(--panel-bg); padding:1rem; border:1px solid var(--border-gold); text-align:center;">
+                <div style="background:var(--bg-panel); padding:1rem; border:1px solid var(--border-gold); text-align:center;">
                     <div style="font-weight:700; color:var(--gold);"><i class="fas fa-coins"></i> L3G3NDS Remaining</div>
-                    <div id="legendRemaining" style="font-size:1.4rem;">150M LGND</div>
+                    <div id="legendRemaining" style="font-size:1.5rem;">150M LGND</div>
                 </div>
-                <div style="background:var(--panel-bg); padding:1rem; border:1px solid var(--border-gold); text-align:center;">
+                <div style="background:var(--bg-panel); padding:1rem; border:1px solid var(--border-gold); text-align:center;">
                     <div style="font-weight:700; color:var(--gold);"><i class="fas fa-ticket"></i> PASS Remaining</div>
-                    <div id="passRemaining" style="font-size:1.4rem;">500M LGND</div>
+                    <div id="passRemaining" style="font-size:1.5rem;">500M LGND</div>
                 </div>
             </div>
 
-            <!-- Интерфейс стейкинга -->
             <div id="stakingInterface" style="display:none; margin-top:2rem;">
-                <div style="background:var(--panel-bg); padding:2rem; border:1px solid var(--border-gold);">
-                    <h3 style="font-family:var(--font-heading); text-align:center; color:var(--sea-blue);"><i class="fas fa-hand-holding-heart"></i> Stake Your NFTs</h3>
+                <div style="background:var(--bg-panel); padding:2rem; border:1px solid var(--border-gold);">
+                    <h3 style="font-family:var(--font-heading); text-align:center; color:var(--gold);"><i class="fas fa-hand-holding-heart"></i> Stake Your NFTs</h3>
                     <div class="grid-2" style="margin-top:1.5rem;">
-                        <!-- L3G3NDS -->
                         <div class="card">
                             <h4 style="font-family:var(--font-heading); color:var(--gold);"><i class="fas fa-image"></i> L3G3NDS</h4>
-                            <div class="staking-info" style="margin:1rem 0;">
+                            <div style="margin:1rem 0;">
                                 <div><strong>Your Balance:</strong> <span id="legendBalance" style="color:var(--gold);">0</span></div>
                                 <div><strong>Pending Rewards:</strong> <span id="legendPending" style="color:var(--gold);">0 LGND</span></div>
-                                <div style="font-size:0.85rem; color:var(--text-secondary);">Reward Rate: <span id="legendRate">1,000 LGND/NFT/day</span></div>
+                                <div style="font-size:0.9rem; color:var(--text-secondary);">Reward Rate: <span id="legendRate">1,000 LGND/NFT/day</span></div>
                             </div>
                             <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-                                <input type="number" id="legendAmount" placeholder="Amount" min="1" style="flex:1; padding:0.5rem; border:1px solid var(--border-gold); background:var(--marble);">
+                                <input type="number" id="legendAmount" placeholder="Amount" min="1" style="flex:1; padding:0.5rem; border:1px solid var(--border-gold); background:var(--bg-primary); color:var(--text-primary);">
                                 <button onclick="stakeLegend()" class="btn btn-small btn-secondary" id="stakeLegendBtn"><i class="fas fa-arrow-up"></i> Stake</button>
-                                <button onclick="openUnstakeModal('legend')" class="btn btn-small" style="background:#c62828; color:#fff;"><i class="fas fa-arrow-down"></i> Unstake</button>
+                                <button onclick="openUnstakeModal('legend')" class="btn btn-small" style="background:#c62828; color:#fff; border-color:#c62828;"><i class="fas fa-arrow-down"></i> Unstake</button>
                                 <button onclick="claimLegend()" class="btn btn-small btn-primary" id="claimLegendBtn"><i class="fas fa-hand-holding-usd"></i> Claim</button>
                             </div>
                             <div style="margin-top:0.8rem; font-size:0.9rem; color:var(--text-secondary);">Your Stakes: <span id="legendStakes">0</span> NFTs</div>
                         </div>
-                        <!-- PASS -->
                         <div class="card">
                             <h4 style="font-family:var(--font-heading); color:var(--gold);"><i class="fas fa-ticket"></i> L3G3NDARY Pass</h4>
-                            <div class="staking-info" style="margin:1rem 0;">
+                            <div style="margin:1rem 0;">
                                 <div><strong>Your Balance:</strong> <span id="passBalance" style="color:var(--gold);">0</span></div>
                                 <div><strong>Pending Rewards:</strong> <span id="passPending" style="color:var(--gold);">0 LGND</span></div>
-                                <div style="font-size:0.85rem; color:var(--text-secondary);">Reward Rate: <span id="passRate">2,500 LGND/NFT/day</span></div>
+                                <div style="font-size:0.9rem; color:var(--text-secondary);">Reward Rate: <span id="passRate">2,500 LGND/NFT/day</span></div>
                             </div>
                             <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-                                <input type="number" id="passAmount" placeholder="Amount" min="1" style="flex:1; padding:0.5rem; border:1px solid var(--border-gold); background:var(--marble);">
+                                <input type="number" id="passAmount" placeholder="Amount" min="1" style="flex:1; padding:0.5rem; border:1px solid var(--border-gold); background:var(--bg-primary); color:var(--text-primary);">
                                 <button onclick="stakePass()" class="btn btn-small btn-secondary" id="stakePassBtn"><i class="fas fa-arrow-up"></i> Stake</button>
-                                <button onclick="openUnstakeModal('pass')" class="btn btn-small" style="background:#c62828; color:#fff;"><i class="fas fa-arrow-down"></i> Unstake</button>
+                                <button onclick="openUnstakeModal('pass')" class="btn btn-small" style="background:#c62828; color:#fff; border-color:#c62828;"><i class="fas fa-arrow-down"></i> Unstake</button>
                                 <button onclick="claimPass()" class="btn btn-small btn-primary" id="claimPassBtn"><i class="fas fa-hand-holding-usd"></i> Claim</button>
                             </div>
                             <div style="margin-top:0.8rem; font-size:0.9rem; color:var(--text-secondary);">Your Stakes: <span id="passStakes">0</span> NFTs</div>
                         </div>
                     </div>
                     <div style="text-align:center; margin-top:1.5rem;">
-                        <div style="display:inline-block; background:rgba(200,155,60,0.06); padding:0.8rem 2rem; border:1px solid var(--border-gold);">
+                        <div style="display:inline-block; background:rgba(212,168,67,0.04); padding:0.8rem 2rem; border:1px solid var(--border-gold); border-radius:40px;">
                             <i class="fas fa-info-circle"></i> Staking contracts are renounced for maximum security
                         </div>
                     </div>
@@ -845,8 +1207,10 @@
             </div>
         </section>
 
-        <!-- ===== ELITE STAKING ===== -->
-        <section class="section" id="eliteStakingSection" style="background:linear-gradient(135deg, rgba(200,155,60,0.04), rgba(27,59,92,0.04)); padding:2rem; border-radius:16px 16px 0 0; margin-top:2rem;">
+        <!-- ============================================================
+        ELITE STAKING
+        ============================================================ -->
+        <section class="section" id="eliteStakingSection" style="background:linear-gradient(135deg, rgba(212,168,67,0.04), rgba(20,18,16,0.9)); padding:2rem; border-radius:16px 16px 0 0; margin-top:2rem;">
             <h2 class="section-title"><i class="fas fa-crown"></i> L3G3NDARY Elite Staking</h2>
             <p style="text-align:center; color:var(--text-secondary); font-size:1.1rem;">Stake Elite NFTs – earn <strong style="color:var(--gold);">777 LGND</strong> per NFT per day</p>
             <div class="grid-4" style="margin-top:1.5rem;">
@@ -863,16 +1227,16 @@
                     <div class="card">
                         <h4 style="font-family:var(--font-heading); color:var(--gold);"><i class="fas fa-lock"></i> Stake Elite</h4>
                         <div style="margin:1rem 0;">
-                            <input type="number" id="eliteTokenIdInput" placeholder="Token ID" style="width:100%; padding:0.5rem; border:1px solid var(--border-gold); background:var(--marble);">
+                            <input type="number" id="eliteTokenIdInput" placeholder="Token ID" style="width:100%; padding:0.5rem; border:1px solid var(--border-gold); background:var(--bg-primary); color:var(--text-primary);">
                             <button id="eliteStakeBtn" class="btn btn-primary" style="width:100%; margin-top:0.5rem;"><i class="fas fa-arrow-up"></i> Stake</button>
                         </div>
                     </div>
                     <div class="card">
                         <h4 style="font-family:var(--font-heading); color:var(--gold);"><i class="fas fa-arrow-down"></i> Unstake Elite</h4>
-                        <select id="eliteUnstakeSelect" style="width:100%; padding:0.5rem; border:1px solid var(--border-gold); background:var(--marble); margin:1rem 0;">
+                        <select id="eliteUnstakeSelect" style="width:100%; padding:0.5rem; border:1px solid var(--border-gold); background:var(--bg-primary); color:var(--text-primary); margin:1rem 0;">
                             <option value="">No staked NFTs</option>
                         </select>
-                        <button id="eliteUnstakeBtn" class="btn" style="background:#c62828; color:#fff; width:100%;"><i class="fas fa-arrow-down"></i> Unstake</button>
+                        <button id="eliteUnstakeBtn" class="btn" style="background:#c62828; color:#fff; border-color:#c62828; width:100%;"><i class="fas fa-arrow-down"></i> Unstake</button>
                     </div>
                     <div class="card">
                         <h4 style="font-family:var(--font-heading); color:var(--gold);"><i class="fas fa-hand-holding-usd"></i> Claim Rewards</h4>
@@ -885,15 +1249,17 @@
             </div>
         </section>
 
-        <!-- ===== LOCKDOWN CAMPAIGN ===== -->
+        <!-- ============================================================
+        LOCKDOWN CAMPAIGN
+        ============================================================ -->
         <section class="section" id="lockdown-campaign">
             <h2 class="section-title"><i class="fas fa-lock"></i> The L3G3NDARY Lockdown</h2>
-            <p style="text-align:center; max-width:700px; margin:0 auto 2rem; color:var(--text-secondary);">Lock LGND, earn a rare NFT, and generate passive rewards.</p>
+            <p style="text-align:center; max-width:700px; margin:0 auto 2rem; color:var(--text-secondary); font-size:1.05rem;">Lock LGND, earn a rare NFT, and generate passive rewards.</p>
             <div class="grid-3">
                 <div class="card" style="border-left:6px solid var(--gold);">
                     <h4 style="font-family:var(--font-heading); color:var(--gold);"><i class="fas fa-crown"></i> VIP Loyalty</h4>
-                    <div style="font-size:2rem; font-weight:700; color:var(--gold); margin:0.5rem 0;">250,000 LGND</div>
-                    <div>Minimum 3 months lock</div>
+                    <div style="font-size:2.2rem; font-weight:700; color:var(--gold); margin:0.5rem 0;">250,000 LGND</div>
+                    <div style="color:var(--text-secondary);">Minimum 3 months lock</div>
                     <div style="margin-top:1rem;">
                         <div style="display:flex; gap:0.8rem; align-items:center; padding:0.4rem 0; border-bottom:1px solid var(--border-gold);">
                             <i class="fas fa-ticket" style="color:var(--gold);"></i> Receive L3G3NDARY PASS NFT
@@ -904,10 +1270,10 @@
                     </div>
                     <a href="https://app.sablier.com/vesting/create?shape=linearTimelock" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; width:100%;"><i class="fas fa-lock"></i> Lock LGND</a>
                 </div>
-                <div class="card" style="border-left:6px solid var(--sea-blue);">
-                    <h4 style="font-family:var(--font-heading); color:var(--sea-blue);"><i class="fas fa-medal"></i> Standard Level</h4>
-                    <div style="font-size:2rem; font-weight:700; color:var(--gold); margin:0.5rem 0;">100,000 LGND</div>
-                    <div>Minimum 3 months lock</div>
+                <div class="card" style="border-left:6px solid var(--gold-dark);">
+                    <h4 style="font-family:var(--font-heading); color:var(--gold-dark);"><i class="fas fa-medal"></i> Standard Level</h4>
+                    <div style="font-size:2.2rem; font-weight:700; color:var(--gold); margin:0.5rem 0;">100,000 LGND</div>
+                    <div style="color:var(--text-secondary);">Minimum 3 months lock</div>
                     <div style="margin-top:1rem;">
                         <div style="display:flex; gap:0.8rem; align-items:center; padding:0.4rem 0; border-bottom:1px solid var(--border-gold);">
                             <i class="fas fa-image" style="color:var(--gold);"></i> Receive L3G3NDS NFT
@@ -918,51 +1284,53 @@
                     </div>
                     <a href="https://app.sablier.com/vesting/create?shape=linearTimelock" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="margin-top:1rem; width:100%;"><i class="fas fa-lock"></i> Lock LGND</a>
                 </div>
-                <div class="card" style="background:rgba(200,155,60,0.04);">
+                <div class="card" style="background:rgba(212,168,67,0.02);">
                     <h4 style="font-family:var(--font-heading); color:var(--gold);"><i class="fas fa-circle-info"></i> How to Participate</h4>
-                    <ol style="margin-top:1rem; padding-left:1.5rem; color:var(--text-secondary);">
-                        <li style="margin-bottom:0.5rem;">Lock LGND for 3+ months on Sablier.</li>
-                        <li style="margin-bottom:0.5rem;">Publish proof on X (Twitter) with link.</li>
-                        <li style="margin-bottom:0.5rem;">Tag <strong>@l3g3ndary_dep</strong> and use <strong>#L3G3NDARYLockdown</strong>.</li>
+                    <ol style="margin-top:1rem; padding-left:1.5rem; color:var(--text-secondary); font-size:1.05rem;">
+                        <li style="margin-bottom:0.6rem;">Lock LGND for 3+ months on Sablier.</li>
+                        <li style="margin-bottom:0.6rem;">Publish proof on X (Twitter) with link.</li>
+                        <li style="margin-bottom:0.6rem;">Tag <strong style="color:var(--text-primary);">@l3g3ndary_dep</strong> and use <strong style="color:var(--text-primary);">#L3G3NDARYLockdown</strong>.</li>
                         <li>Receive rare NFT after verification.</li>
                     </ol>
-                    <div style="margin-top:1rem; padding:0.8rem; background:rgba(46,125,50,0.06); border:1px solid rgba(46,125,50,0.2); text-align:center;">
-                        <i class="fas fa-gift" style="color:#2e7d32;"></i> Your rare NFT will generate LGND rewards on its own.
+                    <div style="margin-top:1.2rem; padding:0.8rem; background:rgba(76,175,80,0.04); border:1px solid rgba(76,175,80,0.12); text-align:center;">
+                        <i class="fas fa-gift" style="color:#4caf50;"></i> Your rare NFT will generate LGND rewards on its own.
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== MEV PROTECTION ===== -->
+        <!-- ============================================================
+        MEV PROTECTION
+        ============================================================ -->
         <section class="section" id="mev-protection">
             <h2 class="section-title"><i class="fas fa-shield-halved"></i> MEV Protection Guide</h2>
             <p style="text-align:center; color:var(--text-secondary); font-size:1.1rem;">Protect your LGND transactions from sandwich attacks and frontrunning bots.</p>
             <div class="grid-3" style="margin-top:2rem;">
                 <div class="card">
-                    <h4 style="font-family:var(--font-heading); color:#c62828;"><i class="fas fa-triangle-exclamation"></i> The Problem</h4>
-                    <p style="margin-top:0.8rem;">Bots scan the public mempool and attack large transactions, forcing you to overpay. <strong>jaredfromsubway.eth</strong> extracted over $40M.</p>
-                    <div style="background:rgba(198,40,40,0.06); padding:0.8rem; margin-top:0.8rem; border-left:4px solid #c62828;">
-                        <div>Average loss: 5-15%</div>
-                        <div>Total MEV extracted: $2B+</div>
+                    <h4 style="font-family:var(--font-heading); color:#e53935;"><i class="fas fa-triangle-exclamation"></i> The Problem</h4>
+                    <p style="margin-top:0.8rem; color:var(--text-secondary);">Bots scan the public mempool and attack large transactions, forcing you to overpay. <strong style="color:var(--text-primary);">jaredfromsubway.eth</strong> extracted over $40M.</p>
+                    <div style="background:rgba(229,57,53,0.06); padding:0.8rem; margin-top:0.8rem; border-left:4px solid #e53935;">
+                        <div style="color:var(--text-secondary);">Average loss: <strong style="color:#e53935;">5-15%</strong></div>
+                        <div style="color:var(--text-secondary);">Total MEV extracted: <strong style="color:#e53935;">$2B+</strong></div>
                     </div>
                 </div>
                 <div class="card">
-                    <h4 style="font-family:var(--font-heading); color:#2e7d32;"><i class="fas fa-check-circle"></i> The Solution</h4>
-                    <p style="margin-top:0.8rem;">Use Flashbots Protect RPC – send transactions directly to validators, bypassing the public mempool.</p>
-                    <div style="background:rgba(46,125,50,0.06); padding:0.8rem; margin-top:0.8rem; border-left:4px solid #2e7d32;">
-                        <div>Protected transactions: 57M+</div>
-                        <div>Refunds earned: 6,716+ ETH</div>
+                    <h4 style="font-family:var(--font-heading); color:#4caf50;"><i class="fas fa-check-circle"></i> The Solution</h4>
+                    <p style="margin-top:0.8rem; color:var(--text-secondary);">Use Flashbots Protect RPC – send transactions directly to validators, bypassing the public mempool.</p>
+                    <div style="background:rgba(76,175,50,0.06); padding:0.8rem; margin-top:0.8rem; border-left:4px solid #4caf50;">
+                        <div style="color:var(--text-secondary);">Protected transactions: <strong style="color:#4caf50;">57M+</strong></div>
+                        <div style="color:var(--text-secondary);">Refunds earned: <strong style="color:#4caf50;">6,716+ ETH</strong></div>
                     </div>
                 </div>
-                <div class="card" style="grid-column:span 1;">
+                <div class="card">
                     <h4 style="font-family:var(--font-heading); color:var(--gold);"><i class="fas fa-gear"></i> One-Time Setup</h4>
-                    <div style="background:rgba(200,155,60,0.06); padding:0.8rem; margin:0.8rem 0; border:1px solid var(--border-gold);">
-                        <div><strong>Network:</strong> Ethereum Mainnet</div>
-                        <div><strong>RPC URL:</strong> <span style="font-family:monospace; word-break:break-all;">https://rpc.flashbots.net</span></div>
-                        <div><strong>Chain ID:</strong> 1</div>
+                    <div style="background:rgba(212,168,67,0.06); padding:0.8rem; margin:0.8rem 0; border:1px solid var(--border-gold);">
+                        <div style="color:var(--text-secondary);"><strong>Network:</strong> Ethereum Mainnet</div>
+                        <div style="color:var(--text-secondary);"><strong>RPC URL:</strong> <span style="font-family:monospace; word-break:break-all; color:var(--text-primary);">https://rpc.flashbots.net</span></div>
+                        <div style="color:var(--text-secondary);"><strong>Chain ID:</strong> 1</div>
                     </div>
-                    <div style="background:rgba(245,127,23,0.06); padding:0.5rem; border-left:4px solid #f57f17; font-size:0.9rem;">
-                        <i class="fas fa-exclamation-triangle" style="color:#f57f17;"></i> Don't switch RPC while a transaction is pending.
+                    <div style="background:rgba(255,167,38,0.06); padding:0.5rem; border-left:4px solid #ffa726; font-size:0.95rem; color:var(--text-secondary);">
+                        <i class="fas fa-exclamation-triangle" style="color:#ffa726;"></i> Don't switch RPC while a transaction is pending.
                     </div>
                     <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.8rem;">
                         <a href="https://flashbots.net/" target="_blank" rel="noopener noreferrer" class="link-btn"><i class="fas fa-arrow-up-right-from-square"></i> Flashbots</a>
@@ -972,10 +1340,12 @@
             </div>
         </section>
 
-        <!-- ===== COMMUNITY ===== -->
+        <!-- ============================================================
+        COMMUNITY
+        ============================================================ -->
         <section class="section" id="community">
             <h2 class="section-title"><i class="fas fa-users"></i> Join Our Community</h2>
-            <p style="text-align:center; color:var(--text-secondary); max-width:600px; margin:0 auto 2rem;">Stay updated, ask questions, and connect with other L3G3NDARY enthusiasts.</p>
+            <p style="text-align:center; color:var(--text-secondary); max-width:600px; margin:0 auto 2rem; font-size:1.1rem;">Stay updated, ask questions, and connect with other L3G3NDARY enthusiasts.</p>
             <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
                 <a href="https://t.me/l3g3ndarycoin" target="_blank" rel="noopener noreferrer" class="link-btn"><i class="fab fa-telegram"></i> Telegram (Announcements)</a>
                 <a href="https://t.me/L3G3NDARYCommunity" target="_blank" rel="noopener noreferrer" class="link-btn"><i class="fab fa-telegram"></i> Telegram (Chat)</a>
@@ -986,7 +1356,9 @@
             </div>
         </section>
 
-        <!-- ===== AMBASSADORS ===== -->
+        <!-- ============================================================
+        AMBASSADORS
+        ============================================================ -->
         <section class="section">
             <h2 class="section-title"><i class="fas fa-star"></i> Ambassadors</h2>
             <div style="display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap;">
@@ -1005,54 +1377,56 @@
     </main>
 
     <!-- ===== FOOTER ===== -->
-    <footer style="background:var(--panel-bg); border-top:3px solid var(--gold); padding:2rem 0; margin-top:3rem; text-align:center;">
+    <footer style="background:var(--bg-panel); border-top:2px solid var(--gold); padding:2rem 0; margin-top:3rem; text-align:center;">
         <div class="container">
-            <div style="font-family:var(--font-heading); letter-spacing:2px; font-size:1.3rem; color:var(--gold);">
+            <div style="font-family:var(--font-heading); letter-spacing:3px; font-size:1.4rem; color:var(--gold);">
                 <i class="fas fa-temple"></i> L3G3NDARY
             </div>
             <div style="display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin:1rem 0;">
-                <span style="background:rgba(46,125,50,0.08); padding:0.2rem 1rem; border-radius:20px;"><i class="fas fa-check-circle" style="color:#2e7d32;"></i> Token Renounced</span>
-                <span style="background:rgba(46,125,50,0.08); padding:0.2rem 1rem; border-radius:20px;"><i class="fas fa-check-circle" style="color:#2e7d32;"></i> Staking Renounced</span>
-                <span style="background:rgba(245,127,23,0.08); padding:0.2rem 1rem; border-radius:20px;"><i class="fas fa-lock" style="color:#f57f17;"></i> Liquidity LOCKED</span>
+                <span style="background:rgba(76,175,80,0.06); padding:0.2rem 1.2rem; border-radius:20px; border:1px solid rgba(76,175,80,0.12);"><i class="fas fa-check-circle" style="color:#4caf50;"></i> Token Renounced</span>
+                <span style="background:rgba(76,175,80,0.06); padding:0.2rem 1.2rem; border-radius:20px; border:1px solid rgba(76,175,80,0.12);"><i class="fas fa-check-circle" style="color:#4caf50;"></i> Staking Renounced</span>
+                <span style="background:rgba(255,167,38,0.06); padding:0.2rem 1.2rem; border-radius:20px; border:1px solid rgba(255,167,38,0.12);"><i class="fas fa-lock" style="color:#ffa726;"></i> Liquidity LOCKED</span>
             </div>
-            <p style="color:var(--text-secondary); font-size:0.9rem;">
+            <p style="color:var(--text-secondary); font-size:0.95rem;">
                 © 2024 L3G3NDARY | <a href="https://l3g3ndary.com" style="color:var(--gold); text-decoration:none;">l3g3ndary.com</a> | Always verify contract addresses
             </p>
         </div>
     </footer>
 
     <!-- ===== WALLET MODAL ===== -->
-    <div id="walletModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:10000; align-items:center; justify-content:center; backdrop-filter:blur(6px);">
-        <div style="background:var(--panel-bg); padding:2rem; border-radius:16px 16px 0 0; max-width:420px; width:90%; border:2px solid var(--gold); position:relative;">
-            <button onclick="closeWalletModal()" style="position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-secondary);"><i class="fas fa-xmark"></i></button>
-            <h3 style="font-family:var(--font-heading); text-align:center; color:var(--sea-blue);"><i class="fas fa-plug"></i> Connect Wallet</h3>
+    <div id="walletModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:10000; align-items:center; justify-content:center; backdrop-filter:blur(6px);">
+        <div style="background:var(--bg-panel); padding:2rem; border-radius:16px 16px 0 0; max-width:420px; width:90%; border:2px solid var(--gold); position:relative;">
+            <button onclick="closeWalletModal()" style="position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--text-secondary);"><i class="fas fa-xmark"></i></button>
+            <h3 style="font-family:var(--font-heading); text-align:center; color:var(--gold);"><i class="fas fa-plug"></i> Connect Wallet</h3>
             <div style="display:grid; grid-template-columns:1fr; gap:0.8rem; margin:1.5rem 0;">
-                <button onclick="connectMobileWallet('metamask')" class="wallet-option" style="background:var(--marble); border:1px solid var(--border-gold); padding:1rem; cursor:pointer; display:flex; align-items:center; gap:1rem; transition:var(--transition);">
+                <button onclick="connectMobileWallet('metamask')" class="wallet-option">
                     <i class="fab fa-metamask" style="font-size:2rem; color:var(--gold);"></i>
                     <span style="font-weight:600;">MetaMask</span>
                 </button>
-                <button onclick="connectMobileWallet('trust')" class="wallet-option" style="background:var(--marble); border:1px solid var(--border-gold); padding:1rem; cursor:pointer; display:flex; align-items:center; gap:1rem;">
-                    <i class="fas fa-shield" style="font-size:2rem; color:#2e7d32;"></i>
+                <button onclick="connectMobileWallet('trust')" class="wallet-option">
+                    <i class="fas fa-shield" style="font-size:2rem; color:#4caf50;"></i>
                     <span style="font-weight:600;">Trust Wallet</span>
                 </button>
-                <button onclick="connectMobileWallet('coinbase')" class="wallet-option" style="background:var(--marble); border:1px solid var(--border-gold); padding:1rem; cursor:pointer; display:flex; align-items:center; gap:1rem;">
-                    <i class="fab fa-bitcoin" style="font-size:2rem; color:#0052ff;"></i>
+                <button onclick="connectMobileWallet('coinbase')" class="wallet-option">
+                    <i class="fab fa-bitcoin" style="font-size:2rem; color:#42a5f5;"></i>
                     <span style="font-weight:600;">Coinbase Wallet</span>
                 </button>
-                <button onclick="connectMobileWallet('rainbow')" class="wallet-option" style="background:var(--marble); border:1px solid var(--border-gold); padding:1rem; cursor:pointer; display:flex; align-items:center; gap:1rem;">
-                    <i class="fas fa-rainbow" style="font-size:2rem; color:#f57f17;"></i>
+                <button onclick="connectMobileWallet('rainbow')" class="wallet-option">
+                    <i class="fas fa-rainbow" style="font-size:2rem; color:#ffa726;"></i>
                     <span style="font-weight:600;">Rainbow</span>
                 </button>
-                <button onclick="connectMobileWallet('walletconnect')" class="wallet-option" style="background:rgba(200,155,60,0.06); border:2px solid var(--gold); padding:1rem; cursor:pointer; display:flex; align-items:center; gap:1rem;">
+                <button onclick="connectMobileWallet('walletconnect')" class="wallet-option" style="border:2px solid var(--gold);">
                     <i class="fas fa-link" style="font-size:2rem; color:var(--gold);"></i>
                     <span style="font-weight:600;">WalletConnect</span>
                 </button>
             </div>
-            <p style="color:var(--text-secondary); font-size:0.85rem; text-align:center;">Select a wallet. If the app doesn't open, install it first.</p>
+            <p style="color:var(--text-secondary); font-size:0.9rem; text-align:center;">Select a wallet. If the app doesn't open, install it first.</p>
         </div>
     </div>
 
-    <!-- ===== JAVASCRIPT (вся логика – без изменений) ===== -->
+    <!-- ============================================================
+    JAVASCRIPT – ВСЯ ЛОГИКА (без изменений, только функции)
+    ============================================================ -->
     <script>
         // ============================
         // CONFIGURATION (полностью сохранена)
@@ -1124,7 +1498,7 @@
             }
         };
 
-        // ========== Утилиты (без изменений) ==========
+        // ========== Утилиты ==========
         function showNotification(message, type = 'info') {
             document.querySelectorAll('.notification').forEach(n => n.remove());
             const notification = document.createElement('div');
@@ -1155,12 +1529,14 @@
 
         function showLoading(buttonId) {
             const btn = document.getElementById(buttonId);
-            if (btn) { btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...'; btn.disabled = true; }
+            if (btn) { btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                btn.disabled = true; }
         }
 
         function hideLoading(buttonId, text) {
             const btn = document.getElementById(buttonId);
-            if (btn) { btn.innerHTML = text; btn.disabled = false; }
+            if (btn) { btn.innerHTML = text;
+                btn.disabled = false; }
         }
 
         function isMobileDevice() {
@@ -1168,7 +1544,9 @@
         }
 
         function getWalletName(walletType) {
-            const names = { metamask: 'MetaMask', trust: 'Trust Wallet', coinbase: 'Coinbase Wallet', rainbow: 'Rainbow', tokenpocket: 'TokenPocket', imtoken: 'imToken', okx: 'OKX Wallet', bitkeep: 'BitKeep', walletconnect: 'WalletConnect' };
+            const names = { metamask: 'MetaMask', trust: 'Trust Wallet', coinbase: 'Coinbase Wallet', rainbow: 'Rainbow',
+                tokenpocket: 'TokenPocket', imtoken: 'imToken', okx: 'OKX Wallet', bitkeep: 'BitKeep',
+                walletconnect: 'WalletConnect' };
             return names[walletType] || 'Wallet';
         }
 
@@ -1189,6 +1567,7 @@
         }
 
         function showWalletModal() { document.getElementById('walletModal').style.display = 'flex'; }
+
         function closeWalletModal() { document.getElementById('walletModal').style.display = 'none'; }
 
         // ========== CONNECT / DISCONNECT ==========
@@ -1251,7 +1630,8 @@
             state.provider = null;
             state.signer = null;
             state.chainId = null;
-            state.stakingData = { legend: { balance: 0, pending: 0, stakes: [] }, pass: { balance: 0, pending: 0, stakes: [] } };
+            state.stakingData = { legend: { balance: 0, pending: 0, stakes: [] }, pass: { balance: 0, pending: 0,
+                    stakes: [] } };
             updateUI();
             updateNetworkInfo();
             showNotification('Wallet disconnected', 'info');
@@ -1285,12 +1665,12 @@
                 }
                 if (networkInfoDiv) {
                     networkInfoDiv.innerHTML = `
-                        <div class="wallet-info" style="display:flex; align-items:center; gap:12px; background:rgba(200,155,60,0.08); padding:0.5rem 1.2rem; border-radius:40px;">
-                            <i class="fas fa-user"></i>
-                            <span class="wallet-address" style="font-family:monospace;">${formatAddress(state.walletAddress)}</span>
-                            <button class="disconnect-btn" onclick="disconnectWallet()" style="background:none; border:1px solid #c62828; color:#c62828; padding:0.2rem 0.8rem; border-radius:20px; cursor:pointer;"><i class="fas fa-sign-out-alt"></i></button>
-                        </div>
-                    `;
+                                <div class="wallet-info">
+                                    <i class="fas fa-user"></i>
+                                    <span class="wallet-address">${formatAddress(state.walletAddress)}</span>
+                                    <button class="disconnect-btn" onclick="disconnectWallet()"><i class="fas fa-sign-out-alt"></i></button>
+                                </div>
+                            `;
                 }
                 if (stakingInterface) stakingInterface.style.display = 'block';
                 if (stakingNotConnected) stakingNotConnected.style.display = 'none';
@@ -1311,12 +1691,14 @@
                 if (!warning) {
                     warning = document.createElement('div');
                     warning.className = 'domain-verification network-warning';
-                    warning.style.background = 'rgba(245,127,23,0.08)';
-                    warning.style.borderColor = 'rgba(245,127,23,0.3)';
+                    warning.style.background = 'rgba(255,167,38,0.06)';
+                    warning.style.borderColor = 'rgba(255,167,38,0.2)';
                     warning.style.marginTop = '1rem';
-                    warning.innerHTML = `<i class="fas fa-triangle-exclamation" style="color:#f57f17;"></i> <strong>WRONG NETWORK</strong> – Please switch to Ethereum Mainnet.`;
+                    warning.innerHTML =
+                        `<i class="fas fa-triangle-exclamation" style="color:#ffa726;"></i> <strong>WRONG NETWORK</strong> – Please switch to Ethereum Mainnet.`;
                     const domainVerification = document.querySelector('.domain-verification');
-                    if (domainVerification) domainVerification.parentNode.insertBefore(warning, domainVerification.nextSibling);
+                    if (domainVerification) domainVerification.parentNode.insertBefore(warning, domainVerification
+                    .nextSibling);
                 }
             } else {
                 const warning = document.querySelector('.network-warning');
@@ -1367,12 +1749,17 @@
                 ];
                 const TokenABI = ["function balanceOf(address account) view returns (uint256)"];
 
-                let legendStaked = 0, passStaked = 0, legendBalance = 0, passBalance = 0;
-                let legendDistributed = 0, passDistributed = 0;
+                let legendStaked = 0,
+                    passStaked = 0,
+                    legendBalance = 0,
+                    passBalance = 0;
+                let legendDistributed = 0,
+                    passDistributed = 0;
 
                 async function getStakedAmount(contract, methods) {
                     for (const method of methods) {
-                        try { if (typeof contract[method] === 'function') return Number(await contract[method]()); } catch(e) {}
+                        try { if (typeof contract[method] === 'function') return Number(await contract[method]()); } catch (
+                        e) {}
                     }
                     return null;
                 }
@@ -1426,15 +1813,20 @@
                 updateElement('dailyRewards', formatNumber(legendDailyPool));
                 updateElement('passRewards', formatNumber(passDailyPool));
                 const legendPoolInfo = document.getElementById('legendPoolInfo');
-                if (legendPoolInfo) legendPoolInfo.innerHTML = `${formatNumber(legendDailyPool)} LGND/day · <span style="color:var(--gold);">⚡ ${formatNumber(legendStaked)} NFTs</span>`;
+                if (legendPoolInfo) legendPoolInfo.innerHTML =
+                    `${formatNumber(legendDailyPool)} LGND/day · <span style="color:var(--gold);">⚡ ${formatNumber(legendStaked)} NFTs</span>`;
                 const passPoolInfo = document.getElementById('passPoolInfo');
-                if (passPoolInfo) passPoolInfo.innerHTML = `${formatNumber(passDailyPool)} LGND/day · <span style="color:var(--gold);">⚡ ${formatNumber(passStaked)} NFTs</span>`;
+                if (passPoolInfo) passPoolInfo.innerHTML =
+                    `${formatNumber(passDailyPool)} LGND/day · <span style="color:var(--gold);">⚡ ${formatNumber(passStaked)} NFTs</span>`;
                 const legendRemainingEl = document.getElementById('legendRemaining');
-                if (legendRemainingEl) legendRemainingEl.innerHTML = `${formatNumber(Math.floor(legendRemaining))} LGND · <span style="font-size:0.8rem;">📦 ${formatNumber(Math.floor(legendBalance))} in contract</span>`;
+                if (legendRemainingEl) legendRemainingEl.innerHTML =
+                    `${formatNumber(Math.floor(legendRemaining))} LGND · <span style="font-size:0.8rem;">📦 ${formatNumber(Math.floor(legendBalance))} in contract</span>`;
                 const passRemainingEl = document.getElementById('passRemaining');
-                if (passRemainingEl) passRemainingEl.innerHTML = `${formatNumber(Math.floor(passRemaining))} LGND · <span style="font-size:0.8rem;">📦 ${formatNumber(Math.floor(passBalance))} in contract</span>`;
+                if (passRemainingEl) passRemainingEl.innerHTML =
+                    `${formatNumber(Math.floor(passRemaining))} LGND · <span style="font-size:0.8rem;">📦 ${formatNumber(Math.floor(passBalance))} in contract</span>`;
 
-                cachedStats = { totalStaked: totalStakedNFTs, legendStaked, passStaked, legendDailyPool, passDailyPool, legendBalance, passBalance, timestamp: Date.now() };
+                cachedStats = { totalStaked: totalStakedNFTs, legendStaked, passStaked, legendDailyPool, passDailyPool,
+                    legendBalance, passBalance, timestamp: Date.now() };
                 localStorage.setItem('cachedStakingStats', JSON.stringify(cachedStats));
                 lastFetchTime = Date.now();
             } catch (error) {
@@ -1448,7 +1840,7 @@
                         document.getElementById('passStakedCount').textContent = formatNumber(data.passStaked);
                         document.getElementById('dailyRewards').textContent = formatNumber(data.legendDailyPool);
                         document.getElementById('passRewards').textContent = formatNumber(data.passDailyPool);
-                    } catch(e) {}
+                    } catch (e) {}
                 }
             }
         }
@@ -1458,9 +1850,11 @@
             if (!state.isConnected || !state.signer) return;
             try {
                 state.contracts.legendStaking = new ethers.Contract(CONFIG.staking["L3G3NDS"], STAKING_ABI, state.signer);
-                state.contracts.passStaking = new ethers.Contract(CONFIG.staking["L3G3NDARY Pass"], STAKING_ABI, state.signer);
+                state.contracts.passStaking = new ethers.Contract(CONFIG.staking["L3G3NDARY Pass"], STAKING_ABI, state
+                .signer);
                 state.contracts.legendNFT = new ethers.Contract(CONFIG.collections["L3G3NDS"], ERC1155_ABI, state.signer);
-                state.contracts.passNFT = new ethers.Contract(CONFIG.collections["L3G3NDARY Pass"], ERC1155_ABI, state.signer);
+                state.contracts.passNFT = new ethers.Contract(CONFIG.collections["L3G3NDARY Pass"], ERC1155_ABI, state
+                .signer);
                 const [legendBalance, passBalance] = await Promise.all([
                     state.contracts.legendNFT.balanceOf(state.walletAddress, 1).catch(() => 0n),
                     state.contracts.passNFT.balanceOf(state.walletAddress, 1).catch(() => 0n)
@@ -1473,8 +1867,10 @@
                     state.contracts.legendStaking.getUserStakes(state.walletAddress).catch(() => []),
                     state.contracts.passStaking.getUserStakes(state.walletAddress).catch(() => [])
                 ]);
-                state.stakingData.legend = { balance: Number(legendBalance), pending: parseFloat(ethers.formatUnits(legendPending, 18)), stakes: legendStakes };
-                state.stakingData.pass = { balance: Number(passBalance), pending: parseFloat(ethers.formatUnits(passPending, 18)), stakes: passStakes };
+                state.stakingData.legend = { balance: Number(legendBalance), pending: parseFloat(ethers.formatUnits(
+                        legendPending, 18)), stakes: legendStakes };
+                state.stakingData.pass = { balance: Number(passBalance), pending: parseFloat(ethers.formatUnits(
+                        passPending, 18)), stakes: passStakes };
                 updateUserUI();
             } catch (error) {
                 console.error('User data error:', error);
@@ -1498,10 +1894,12 @@
             if (amount > state.stakingData.legend.balance) { showNotification('Insufficient balance', 'error'); return; }
             showLoading('stakeLegendBtn');
             try {
-                const isApproved = await state.contracts.legendNFT.isApprovedForAll(state.walletAddress, CONFIG.staking["L3G3NDS"]);
+                const isApproved = await state.contracts.legendNFT.isApprovedForAll(state.walletAddress, CONFIG.staking[
+                    "L3G3NDS"]);
                 if (!isApproved) {
                     showNotification('Approving NFTs...', 'info');
-                    const approveTx = await state.contracts.legendNFT.setApprovalForAll(CONFIG.staking["L3G3NDS"], true);
+                    const approveTx = await state.contracts.legendNFT.setApprovalForAll(CONFIG.staking["L3G3NDS"],
+                    true);
                     await approveTx.wait();
                 }
                 const tx = await state.contracts.legendStaking.stake(1, amount);
@@ -1524,10 +1922,12 @@
             if (amount > state.stakingData.pass.balance) { showNotification('Insufficient balance', 'error'); return; }
             showLoading('stakePassBtn');
             try {
-                const isApproved = await state.contracts.passNFT.isApprovedForAll(state.walletAddress, CONFIG.staking["L3G3NDARY Pass"]);
+                const isApproved = await state.contracts.passNFT.isApprovedForAll(state.walletAddress, CONFIG.staking[
+                    "L3G3NDARY Pass"]);
                 if (!isApproved) {
                     showNotification('Approving Pass NFTs...', 'info');
-                    const approveTx = await state.contracts.passNFT.setApprovalForAll(CONFIG.staking["L3G3NDARY Pass"], true);
+                    const approveTx = await state.contracts.passNFT.setApprovalForAll(CONFIG.staking[
+                    "L3G3NDARY Pass"], true);
                     await approveTx.wait();
                 }
                 const tx = await state.contracts.passStaking.stake(1, amount);
@@ -1582,18 +1982,22 @@
             const stakes = type === 'legend' ? state.stakingData.legend.stakes : state.stakingData.pass.stakes;
             if (!stakes || stakes.length === 0) { showNotification('No stakes found', 'warning'); return; }
             const modal = document.createElement('div');
-            modal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:flex; align-items:center; justify-content:center; z-index:99999;';
-            let html = `<div style="background:var(--panel-bg); padding:2rem; border-radius:16px; max-width:500px; width:90%; border:2px solid var(--gold);">
-                        <h3 style="font-family:var(--font-heading); color:var(--sea-blue);"><i class="fas fa-arrow-down"></i> Select stake to unstake</h3>`;
+            modal.style.cssText =
+                'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:flex; align-items:center; justify-content:center; z-index:99999;';
+            let html =
+                `<div style="background:var(--bg-panel); padding:2rem; border-radius:16px; max-width:500px; width:90%; border:2px solid var(--gold);">
+                            <h3 style="font-family:var(--font-heading); color:var(--gold);"><i class="fas fa-arrow-down"></i> Select stake to unstake</h3>`;
             stakes.forEach((stake, index) => {
                 const date = new Date(Number(stake.stakedAt) * 1000);
                 const days = Math.floor((Date.now() - date) / (86400000));
-                html += `<div style="background:rgba(200,155,60,0.06); padding:0.8rem; margin:0.5rem 0; cursor:pointer; border:1px solid var(--border-gold);" onclick="performUnstake('${type}', ${index}, this)">
-                            <div><strong>Amount:</strong> ${Number(stake.amount)}</div>
-                            <div style="font-size:0.85rem; color:var(--text-secondary);">Staked: ${date.toLocaleDateString()} (${days} days ago)</div>
-                        </div>`;
+                html +=
+                    `<div style="background:rgba(212,168,67,0.04); padding:0.8rem; margin:0.5rem 0; cursor:pointer; border:1px solid var(--border-gold);" onclick="performUnstake('${type}', ${index}, this)">
+                                <div><strong>Amount:</strong> ${Number(stake.amount)}</div>
+                                <div style="font-size:0.85rem; color:var(--text-secondary);">Staked: ${date.toLocaleDateString()} (${days} days ago)</div>
+                            </div>`;
             });
-            html += `<div style="text-align:center; margin-top:1rem;"><button onclick="this.parentNode.parentNode.remove()" class="btn">Cancel</button></div></div>`;
+            html +=
+                `<div style="text-align:center; margin-top:1rem;"><button onclick="this.parentNode.parentNode.remove()" class="btn">Cancel</button></div></div>`;
             modal.innerHTML = html;
             document.body.appendChild(modal);
         }
@@ -1614,11 +2018,12 @@
                 showNotification('Unstake failed: ' + error.message, 'error');
                 const stake = state.stakingData[type].stakes[index];
                 const date = new Date(Number(stake.stakedAt) * 1000);
-                element.innerHTML = `<div><strong>Amount:</strong> ${Number(stake.amount)}</div><div style="font-size:0.85rem; color:var(--text-secondary);">Staked: ${date.toLocaleDateString()}</div>`;
+                element.innerHTML =
+                    `<div><strong>Amount:</strong> ${Number(stake.amount)}</div><div style="font-size:0.85rem; color:var(--text-secondary);">Staked: ${date.toLocaleDateString()}</div>`;
             }
         }
 
-        // ========== ELITE STAKING (полностью сохранён) ==========
+        // ========== ELITE STAKING ==========
         const ELITE_CONFIG = {
             staking: "0xC95FC3701b912c178EC907e876b6217bDF545a3E",
             nft: "0x18Bf70e35861AD9E59207828E38ee751DdC0b458",
@@ -1644,7 +2049,8 @@
             "function symbol() view returns (string)"
         ];
 
-        let eliteData = { stakingContract: null, nftContract: null, tokenContract: null, stakedTokens: [], tokenDecimals: 18, tokenSymbol: "LGND" };
+        let eliteData = { stakingContract: null, nftContract: null, tokenContract: null, stakedTokens: [],
+            tokenDecimals: 18, tokenSymbol: "LGND" };
 
         function eliteIsConnected() { return typeof state !== "undefined" && state.isConnected && state.signer; }
 
@@ -1740,13 +2146,16 @@
             const input = document.getElementById("eliteTokenIdInput");
             const oldText = btn ? btn.innerHTML : "";
             try {
-                if (!eliteIsConnected()) { await eliteConnect(); if (!eliteIsConnected()) { eliteNotify("Please connect wallet first", "warning"); return; } }
+                if (!eliteIsConnected()) { await eliteConnect(); if (!eliteIsConnected()) { eliteNotify(
+                        "Please connect wallet first", "warning"); return; } }
                 const tokenId = input.value;
                 if (!tokenId || Number(tokenId) <= 0) { eliteNotify("Enter valid Elite Token ID", "warning"); return; }
                 eliteInitContracts();
-                if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking...'; }
+                if (btn) { btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking...'; }
                 const owner = await eliteData.nftContract.ownerOf(tokenId);
-                if (owner.toLowerCase() !== state.walletAddress.toLowerCase()) { eliteNotify("You do not own this Elite NFT", "error"); return; }
+                if (owner.toLowerCase() !== state.walletAddress.toLowerCase()) { eliteNotify(
+                        "You do not own this Elite NFT", "error"); return; }
                 if (btn) btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Approving...';
                 const approvedAddress = await eliteData.nftContract.getApproved(tokenId);
                 if (approvedAddress.toLowerCase() !== ELITE_CONFIG.staking.toLowerCase()) {
@@ -1765,7 +2174,8 @@
                 console.error("Elite stake error:", error);
                 eliteNotify("Elite stake failed: " + eliteShortError(error), "error");
             } finally {
-                if (btn) { btn.disabled = false; btn.innerHTML = oldText; }
+                if (btn) { btn.disabled = false;
+                    btn.innerHTML = oldText; }
             }
         }
 
@@ -1774,11 +2184,13 @@
             const select = document.getElementById("eliteUnstakeSelect");
             const oldText = btn ? btn.innerHTML : "";
             try {
-                if (!eliteIsConnected()) { await eliteConnect(); if (!eliteIsConnected()) { eliteNotify("Please connect wallet first", "warning"); return; } }
+                if (!eliteIsConnected()) { await eliteConnect(); if (!eliteIsConnected()) { eliteNotify(
+                        "Please connect wallet first", "warning"); return; } }
                 const tokenId = select.value;
                 if (!tokenId) { eliteNotify("Select Elite NFT to unstake", "warning"); return; }
                 eliteInitContracts();
-                if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Unstaking...'; }
+                if (btn) { btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Unstaking...'; }
                 const tx = await eliteData.stakingContract.unstake(tokenId);
                 await tx.wait();
                 eliteNotify(`✅ Elite NFT #${tokenId} unstaked`, "success");
@@ -1788,7 +2200,8 @@
                 console.error("Elite unstake error:", error);
                 eliteNotify("Elite unstake failed: " + eliteShortError(error), "error");
             } finally {
-                if (btn) { btn.disabled = false; btn.innerHTML = oldText; }
+                if (btn) { btn.disabled = false;
+                    btn.innerHTML = oldText; }
             }
         }
 
@@ -1796,9 +2209,11 @@
             const btn = document.getElementById("eliteClaimBtn");
             const oldText = btn ? btn.innerHTML : "";
             try {
-                if (!eliteIsConnected()) { await eliteConnect(); if (!eliteIsConnected()) { eliteNotify("Please connect wallet first", "warning"); return; } }
+                if (!eliteIsConnected()) { await eliteConnect(); if (!eliteIsConnected()) { eliteNotify(
+                        "Please connect wallet first", "warning"); return; } }
                 eliteInitContracts();
-                if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Claiming...'; }
+                if (btn) { btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Claiming...'; }
                 const tx = await eliteData.stakingContract.claimRewards();
                 await tx.wait();
                 eliteNotify("✅ Elite rewards claimed", "success");
@@ -1808,7 +2223,8 @@
                 console.error("Elite claim error:", error);
                 eliteNotify("Elite claim failed: " + eliteShortError(error), "error");
             } finally {
-                if (btn) { btn.disabled = false; btn.innerHTML = oldText; }
+                if (btn) { btn.disabled = false;
+                    btn.innerHTML = oldText; }
             }
         }
 
@@ -1823,21 +2239,20 @@
 
         // ========== INIT ==========
         window.addEventListener('load', async () => {
-            console.log('🏛️ L3G3NDARY Acropolis initializing...');
+            console.log('🏛️ L3G3NDARY Acropolis (Black & Gold) initializing...');
             document.querySelectorAll('.contract-address').forEach(el => {
                 el.style.cursor = 'pointer';
                 el.title = 'Click to copy';
                 el.addEventListener('click', function() { copyToClipboard(this.textContent.trim()); });
             });
             document.getElementById('goToStakingBtn').onclick = function() {
-                if (!state.isConnected) { connectWallet(); } else { document.querySelector('.staking-section').scrollIntoView({ behavior: 'smooth' }); }
+                if (!state.isConnected) { connectWallet(); } else { document.querySelector('.staking-section')
+                        .scrollIntoView({ behavior: 'smooth' }); }
             };
             await updateStakingStats();
             setupEventListeners();
             setInterval(updateStakingStats, 15000);
-            // Elite staking
             setupEliteStakingSection();
-            // Скрыть модалку при клике вне
             document.getElementById('walletModal').addEventListener('click', function(e) {
                 if (e.target === this) closeWalletModal();
             });
@@ -1857,7 +2272,8 @@
                 window.ethereum.on('chainChanged', (chainId) => {
                     state.chainId = parseInt(chainId, 16);
                     updateNetworkInfo();
-                    if (state.isConnected) { loadUserData(); updateStakingStats(); }
+                    if (state.isConnected) { loadUserData();
+                        updateStakingStats(); }
                 });
                 window.ethereum.on('disconnect', disconnectWallet);
             }
@@ -1883,5 +2299,6 @@
         window.updateStakingStats = updateStakingStats;
         window.loadUserData = loadUserData;
     </script>
+
 </body>
 </html>
