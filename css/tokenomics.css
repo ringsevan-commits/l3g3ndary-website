@@ -1,0 +1,127 @@
+/* ==================================================
+   TOKENOMICS
+================================================== */
+
+.tokenomics{
+    padding:140px 0;
+}
+
+.tokenomics-panel{
+
+    max-width:760px;
+    margin:0 auto;
+
+    padding:44px 50px;
+    border-radius:24px;
+
+    background:rgba(255,255,255,.02);
+    border:var(--border-hair);
+
+}
+
+.tokenomics-bar-row{
+
+    margin-bottom:26px;
+
+}
+
+.tokenomics-bar-row:last-of-type{
+    margin-bottom:0;
+}
+
+.tokenomics-bar-label{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
+
+    margin-bottom:10px;
+
+    font-size:15px;
+    color:#e6e6e6;
+    font-weight:600;
+
+}
+
+.tokenomics-bar-label em{
+    color:#8d8d8d;
+    font-style:normal;
+    font-weight:400;
+    font-size:13px;
+}
+
+.tokenomics-percent{
+
+    flex-shrink:0;
+
+    font-family:var(--font-heading);
+    color:var(--gold-light);
+    font-size:15px;
+    font-weight:600;
+
+}
+
+.tokenomics-bar-track{
+
+    width:100%;
+    height:10px;
+    border-radius:999px;
+
+    background:rgba(255,255,255,.06);
+    overflow:hidden;
+
+}
+
+.tokenomics-bar-fill{
+
+    height:100%;
+    border-radius:999px;
+
+    background:linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-light));
+
+}
+
+.tokenomics-note{
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:14px 30px;
+
+    margin-top:40px;
+    padding-top:32px;
+
+    border-top:1px dashed rgba(255,255,255,.12);
+
+    text-align:center;
+
+}
+
+.tokenomics-note span{
+
+    font-size:13px;
+    color:#a0a0a0;
+    letter-spacing:.3px;
+
+}
+
+/* ---------- Responsive ---------- */
+
+@media(max-width:768px){
+
+    .tokenomics{
+        padding:90px 0;
+    }
+
+    .tokenomics-panel{
+        padding:30px 24px;
+    }
+
+    .tokenomics-bar-label{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:2px;
+    }
+
+}

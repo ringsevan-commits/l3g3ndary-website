@@ -1,0 +1,86 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--background);
+    color:var(--white);
+    font-family:var(--font-body);
+    font-size:17px;
+    line-height:1.5;
+    overflow-x:hidden;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+    color:inherit;
+}
+
+/* ---------- Headings ---------- */
+
+h1,h2,h3,h4{
+    font-family:var(--font-heading);
+    font-weight:600;
+    letter-spacing:.5px;
+}
+
+/* ---------- Selection ---------- */
+
+::selection{
+    background:var(--gold);
+    color:#000;
+}
+
+/* ---------- Accessible focus ---------- */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+    border-radius:6px;
+}
+
+/* ---------- Scrollbar ---------- */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:var(--black);
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(180deg,var(--gold),var(--gold-deep));
+    border-radius:10px;
+}
+
+/* ---------- Motion preference ---------- */
+
+@media (prefers-reduced-motion: reduce){
+    *,
+    *::before,
+    *::after{
+        animation-duration:.001ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.001ms !important;
+        scroll-behavior:auto !important;
+    }
+}
