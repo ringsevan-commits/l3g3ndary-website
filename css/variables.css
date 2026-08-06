@@ -1,0 +1,35 @@
+:root{
+
+    /* ---------- Palette ---------- */
+    --gold:#D4AF37;
+    --gold-light:#F4D47A;
+    --gold-deep:#9C7A22;
+
+    --black:#060606;
+    --background:#0B0B0B;
+    --surface:#0F0F0F;
+
+    --white:#ffffff;
+    --gray:#C8C8C8;
+    --gray-dim:#8d8d8d;
+
+    /* ---------- Typography ---------- */
+    /* Display / headings — classical Greek lapidary capitals (Cinzel), with
+       GFS Didot (based on Firmin Didot's Greek cuts) as an authentic backup */
+    --font-heading:'Cinzel', 'GFS Didot', 'Times New Roman', serif;
+    /* Body / UI — GFS Neohellenic, a genuine Greek-type revival, still fully
+       legible at small sizes */
+    --font-body:'GFS Neohellenic', 'Cinzel', Georgia, 'Times New Roman', serif;
+
+    /* ---------- Layout ---------- */
+    --container:1440px;
+    --transition:.35s ease;
+    --radius:18px;
+    --radius-lg:28px;
+
+    /* ---------- Effects ---------- */
+    --shadow-gold: 0 20px 60px rgba(0,0,0,.45), 0 0 35px rgba(214,180,106,.18);
+    --border-hair: 1px solid rgba(255,255,255,.08);
+    --border-gold: 1px solid rgba(214,180,106,.35);
+
+}

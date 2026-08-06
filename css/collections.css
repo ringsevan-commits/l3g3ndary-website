@@ -1,0 +1,280 @@
+/* ===================================================
+   COLLECTIONS
+=================================================== */
+
+.collections{
+    position:relative;
+    padding:180px 0;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at top,
+        rgba(214,180,106,.08),
+        transparent 45%),
+        linear-gradient(180deg,#050505 0%,#0b0b0b 100%);
+}
+
+/* ===========================
+   GRID
+=========================== */
+
+.collections-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:36px;
+
+    margin-top:80px;
+
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.collection-card{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    border-radius:28px;
+
+    text-decoration:none;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.07);
+
+    backdrop-filter:blur(18px);
+
+    transition:
+        border-color .35s,
+        box-shadow .35s,
+        transform .35s,
+        opacity .75s cubic-bezier(.16,.8,.28,1) calc(var(--i, 0) * 90ms);
+
+}
+
+.collection-card:hover{
+
+    border-color:rgba(214,180,106,.45);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45),
+        0 0 35px rgba(214,180,106,.18);
+
+    transform:translateY(-6px);
+
+}
+
+/* ===========================
+   IMAGE
+=========================== */
+
+.collection-image{
+
+    position:relative;
+
+    overflow:hidden;
+
+    aspect-ratio:1/1;
+
+}
+
+.collection-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:
+        transform .7s ease,
+        filter .5s ease;
+
+    filter:brightness(.82);
+
+}
+
+.collection-card:hover img{
+
+    transform:scale(1.05);
+
+    filter:brightness(1);
+
+}
+
+.collection-image::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.75),
+            transparent 55%
+        );
+
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.collection-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    flex:1;
+
+    padding:32px;
+
+}
+
+.collection-standard{
+
+    display:inline-flex;
+
+    width:max-content;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:rgba(214,180,106,.12);
+
+    border:1px solid rgba(214,180,106,.35);
+
+    color:#d6b46a;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:22px;
+
+}
+
+.collection-content h3{
+
+    color:#fff;
+
+    font-size:30px;
+
+    line-height:1.2;
+
+    margin-bottom:18px;
+
+}
+
+.collection-content p{
+
+    color:#bfbfbf;
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    flex:1;
+
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.collection-footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:35px;
+
+    padding-top:24px;
+
+    border-top:1px solid rgba(255,255,255,.06);
+
+    color:#d6b46a;
+
+    font-weight:600;
+
+}
+
+.arrow{
+
+    font-size:24px;
+
+    transition:transform .35s ease;
+
+}
+
+.collection-card:hover .arrow{
+
+    transform:translateX(8px);
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:1200px){
+
+    .collections-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .collections{
+
+        padding:120px 0;
+
+    }
+
+    .collections-grid{
+
+        grid-template-columns:1fr;
+
+        gap:30px;
+
+    }
+
+    .collection-content{
+
+        padding:26px;
+
+    }
+
+    .collection-content h3{
+
+        font-size:26px;
+
+    }
+
+}

@@ -1,0 +1,295 @@
+/* ===================================================
+   ROADMAP
+=================================================== */
+
+.roadmap{
+
+    position:relative;
+
+    padding:180px 0;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at center,
+        rgba(214,180,106,.05),
+        transparent 60%),
+        linear-gradient(180deg,#090909 0%,#050505 100%);
+
+}
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.roadmap-timeline{
+
+    position:relative;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:40px;
+
+    margin-top:100px;
+
+}
+
+.roadmap-timeline::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:38px;
+
+    left:8%;
+
+    right:8%;
+
+    height:2px;
+
+    background:linear-gradient(
+        to right,
+        #d6b46a,
+        rgba(214,180,106,.25)
+    );
+
+}
+
+/* ==========================================
+   ITEM
+========================================== */
+
+.roadmap-item{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+/* ==========================================
+   DOT
+========================================== */
+
+.roadmap-dot{
+
+    width:78px;
+
+    height:78px;
+
+    border-radius:50%;
+
+    background:#141414;
+
+    border:3px solid rgba(255,255,255,.08);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:36px;
+
+    transition:.35s;
+
+}
+
+.roadmap-dot::after{
+
+    content:"";
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#555;
+
+}
+
+/* ==========================================
+   STATES
+========================================== */
+
+.completed .roadmap-dot{
+
+    border-color:#d6b46a;
+
+    box-shadow:0 0 30px rgba(214,180,106,.45);
+
+}
+
+.completed .roadmap-dot::after{
+
+    background:#d6b46a;
+
+}
+
+.current .roadmap-dot{
+
+    border-color:#ffffff;
+
+    box-shadow:0 0 35px rgba(255,255,255,.35);
+
+}
+
+.current .roadmap-dot::after{
+
+    background:white;
+
+}
+
+/* ==========================================
+   CARD
+========================================== */
+
+.roadmap-card{
+
+    width:100%;
+
+    padding:34px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    transition:.35s;
+
+}
+
+.roadmap-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(214,180,106,.45);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45),
+        0 0 35px rgba(214,180,106,.15);
+
+}
+
+.roadmap-phase{
+
+    display:inline-flex;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:rgba(214,180,106,.08);
+
+    border:1px solid rgba(214,180,106,.35);
+
+    color:#d6b46a;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:22px;
+
+}
+
+.roadmap-card h3{
+
+    font-size:30px;
+
+    color:#fff;
+
+    margin-bottom:26px;
+
+}
+
+.roadmap-card ul{
+
+    list-style:none;
+
+}
+
+.roadmap-card li{
+
+    color:#bdbdbd;
+
+    line-height:1.9;
+
+    margin-bottom:12px;
+
+    position:relative;
+
+    padding-left:18px;
+
+}
+
+.roadmap-card li::before{
+
+    content:"•";
+
+    position:absolute;
+
+    left:0;
+
+    color:#d6b46a;
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:1200px){
+
+    .roadmap-timeline{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .roadmap-timeline::before{
+
+        display:none;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .roadmap{
+
+        padding:120px 0;
+
+    }
+
+    .roadmap-timeline{
+
+        grid-template-columns:1fr;
+
+        gap:35px;
+
+    }
+
+    .roadmap-dot{
+
+        margin-bottom:24px;
+
+    }
+
+}

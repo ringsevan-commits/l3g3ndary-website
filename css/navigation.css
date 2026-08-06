@@ -1,0 +1,271 @@
+/* ==================================================
+   HEADER
+================================================== */
+
+.header{
+
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    background:rgba(10,10,10,.55);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(214,180,106,.15);
+
+    transition:background .35s, border-color .35s, box-shadow .35s;
+
+}
+
+.header.scrolled{
+
+    background:rgba(8,8,8,.86);
+    border-bottom-color:rgba(214,180,106,.28);
+    box-shadow:0 10px 40px rgba(0,0,0,.35);
+
+}
+
+.header .container{
+
+    height:86px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+}
+
+/* ---------- Logo ---------- */
+
+.logo{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-family:var(--font-heading);
+    font-size:26px;
+    font-weight:600;
+    color:#fff;
+    letter-spacing:3px;
+    transition:.3s;
+
+}
+
+.logo .logo-mark{
+
+    display:inline-flex;
+    color:var(--gold);
+    flex-shrink:0;
+
+}
+
+.logo:hover{
+    color:var(--gold-light);
+}
+
+/* ---------- Navigation ---------- */
+
+.header nav{
+    display:flex;
+    gap:36px;
+}
+
+.header nav a{
+
+    position:relative;
+    text-decoration:none;
+    color:#d0d0d0;
+    font-size:15px;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    font-weight:500;
+    transition:.3s;
+    outline:none;
+    padding:4px 2px;
+    border-radius:4px;
+
+}
+
+/* Anchor-jump links get an outline heuristic quirk in some
+   Chromium browsers on click — style it to match the site
+   instead of the default browser focus box */
+.header nav a:focus-visible{
+    outline:none;
+    color:#fff;
+    text-shadow:0 0 12px rgba(214,180,106,.5);
+}
+
+.header nav a::after{
+
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0;
+    height:2px;
+    background:var(--gold);
+    transition:.3s;
+
+}
+
+.header nav a:hover,
+.header nav a.active,
+.header nav a:focus-visible{
+    color:#fff;
+}
+
+.header nav a:hover::after,
+.header nav a.active::after,
+.header nav a:focus-visible::after{
+    width:100%;
+}
+
+/* ---------- Right side ---------- */
+
+.header-actions{
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+}
+
+/* ---------- Wallet Button ---------- */
+
+.connect{
+
+    padding:14px 28px;
+    border-radius:999px;
+    border:1px solid rgba(214,180,106,.35);
+    background:rgba(214,180,106,.08);
+    color:#fff;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:.5px;
+    white-space:nowrap;
+
+}
+
+.connect:hover{
+
+    background:var(--gold);
+    color:#000;
+    box-shadow:0 0 25px rgba(214,180,106,.35);
+    transform:translateY(-2px);
+
+}
+
+/* ---------- Mobile menu toggle ---------- */
+
+.menu-toggle{
+
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    width:44px;
+    height:44px;
+    border:1px solid rgba(214,180,106,.3);
+    border-radius:50%;
+    background:rgba(214,180,106,.06);
+    cursor:pointer;
+    flex-shrink:0;
+
+}
+
+.menu-toggle span{
+
+    display:block;
+    width:18px;
+    height:2px;
+    background:var(--gold-light);
+    border-radius:2px;
+    transition:transform .3s ease, opacity .3s ease;
+
+}
+
+.menu-toggle.active span:nth-child(1){
+    transform:translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2){
+    opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+    transform:translateY(-8px) rotate(-45deg);
+}
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:900px){
+
+    .menu-toggle{
+        display:flex;
+    }
+
+    .header nav{
+
+        position:fixed;
+        top:86px;
+        left:0;
+        right:0;
+
+        flex-direction:column;
+        align-items:flex-start;
+        gap:0;
+
+        background:rgba(8,8,8,.98);
+        backdrop-filter:blur(20px);
+        border-bottom:1px solid rgba(214,180,106,.15);
+
+        max-height:0;
+        overflow:hidden;
+        transition:max-height .4s ease;
+
+    }
+
+    .header nav.open{
+        max-height:420px;
+    }
+
+    .header nav a{
+
+        width:100%;
+        padding:18px 6%;
+        border-bottom:1px solid rgba(255,255,255,.06);
+
+    }
+
+    .header nav a::after{
+        display:none;
+    }
+
+    .header-actions .connect{
+        padding:12px 20px;
+        font-size:13px;
+    }
+
+}
+
+.connect-short{
+    display:none;
+}
+
+@media(max-width:480px){
+
+    .header-actions .connect span.connect-full{
+        display:none;
+    }
+
+    .header-actions .connect span.connect-short{
+        display:inline;
+    }
+
+}
